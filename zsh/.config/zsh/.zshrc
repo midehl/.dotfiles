@@ -8,7 +8,11 @@ fi
 # EXPORTS
 export EDITOR="vim"
 export VISUAL="vim"
+
+## fzf setup
 export FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+export FZF_DEFAULT_COMMAND='fd --type f'
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"     # this loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"      # this loads nvm bash_completion
@@ -69,8 +73,11 @@ compinit
 
 
 # ALIASES 
-alias zshconfig="vim $HOME/.config/zsh/.zshrc"
+alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
+alias nvimconfig="nvim $HOME/.config/nvim"
 alias cat="bat --paging=never"
+alias ls=exa
+alias sd="cd ~ && cd \$(find * -type d | fzf)"
 
 
 # CLI Tools
