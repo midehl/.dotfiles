@@ -6,12 +6,24 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # EXPORTS
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="usr/local/bin/nvim"
+export VISUAL="usr/local/bin/nvim"
 
 ## fzf setup
 export FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 export FZF_DEFAULT_COMMAND='fd --type f'
+
+# manpage highlighting
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+#rust
+source "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"     # this loads nvm
@@ -59,6 +71,8 @@ compinit
  # <<< conda initialize <<<
 
 
+ # wayland on firefox
+ export MOZ_ENABLE_WAYLAND=1
 
  # PATH stuff
  export PATH=$PATH:/usr/games
@@ -75,6 +89,8 @@ compinit
 # ALIASES 
 alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
 alias nvimconfig="nvim $HOME/.config/nvim"
+alias sshconfig="nvim $HOME/.ssh/config"
+alias swayconfig="nvim $HOME/.config/sway/config"
 alias cat="bat --paging=never"
 alias ls=exa
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
@@ -83,6 +99,29 @@ alias sd="cd ~ && cd \$(find * -type d | fzf)"
 # CLI Tools
 eval $(thefuck --alias)
 
+# functions
+function ssh_lemon() {
+    LEMONADE_PID_FILE="$HOME/.lemonade_pid"
+
+    # Start Lemonade server if not running
+    if ! pgrep -f "lemonade server" > /dev/null; then
+        echo "Starting Lemonade server..."
+        lemonade server > /dev/null 2>&1 &
+        echo $! > "$LEMONADE_PID_FILE"
+    else
+        echo "Lemonade server is already running."
+    fi
+
+    # SSH into the remote machine
+    ssh "$@"
+
+    # Stop Lemonade server if it was started by this script
+    if [ -f "$LEMONADE_PID_FILE" ]; then
+        kill $(cat "$LEMONADE_PID_FILE")
+        rm "$LEMONADE_PID_FILE"
+        echo "Lemonade server stopped."
+    fi
+}
 
 # PLUGINS 
 # Additional completions
