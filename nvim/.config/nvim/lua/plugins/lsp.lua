@@ -31,6 +31,7 @@ return {
 
       -- setup mason to manage 3rd party lsp servers
       require('mason').setup({
+        PATH = 'prepend', --"skip" seems to cause a spawning error
         ui = {
           border = 'rounded',
         },
