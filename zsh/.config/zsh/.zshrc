@@ -87,6 +87,7 @@ compinit
 
 
 # ALIASES 
+alias dotfiles='cd $HOME/.dotfiles/'
 alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
 alias nvimconfig="nvim $HOME/.config/nvim"
 alias sshconfig="nvim $HOME/.ssh/config"
