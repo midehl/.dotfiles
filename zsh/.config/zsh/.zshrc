@@ -100,6 +100,12 @@ function nvimconfig() {
   nvim . # Open nvim in the current directory (which is now the nvim config directory)
   cd "$oldpwd" # Return to the original working directory after exiting nvim
 }
+function tmuxconfig() {
+  local oldpwd=$(pwd) 
+  cd $HOME/.config/tmux/
+  nvim tmux.conf
+  cd "$oldpwd"
+}
 
 # Exa/LS aliases
 alias ls='exa'                                                          # ls
