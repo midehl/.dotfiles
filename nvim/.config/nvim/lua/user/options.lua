@@ -22,25 +22,25 @@ vim.opt.hlsearch = true
 vim.opt.wrap = false
 
 --set leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- better splitting
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 --enable mouse mode
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 --enable ignorecase + smartcase for better searching
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
---decrease update time 
+--decrease update time
 vim.opt.updatetime = 50
 
 --disable auto select in autocmp options
-vim.opt.completeopt = {"menuone", "noselect"}
+vim.opt.completeopt = { "menuone", "noselect" }
 
 -- persistent undo history
 vim.opt.undofile = true
@@ -58,7 +58,7 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.cursorline = true
 
 --enable a column line
-vim.opt.colorcolumn = "80"
+--vim.opt.colorcolumn = "80"
 
 -- always keep 8 lines above/below cursor unless at the start/end of file
 vim.opt.scrolloff = 8
@@ -78,4 +78,3 @@ vim.opt.guicursor = {
 	"r-cr:hor20", --replace, cmd-line replace: horizontal bar cursor 20% height
 	"o:hor50", --operator--pending: horizontal bar cursor 50% height
 }
-
