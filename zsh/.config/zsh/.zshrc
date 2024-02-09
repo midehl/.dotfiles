@@ -89,12 +89,17 @@ compinit
 # ALIASES 
 alias dotfiles='cd $HOME/.dotfiles/'
 alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
-alias nvimconfig="nvim $HOME/.config/nvim"
 alias sshconfig="nvim $HOME/.ssh/config"
 alias swayconfig="nvim $HOME/.config/sway/config"
 alias cat="bat --paging=never"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias vim=nvim
+function nvimconfig() {
+  local oldpwd=$(pwd) # Save the current working directory
+  cd $HOME/.config/nvim # Change to the nvim config directory
+  nvim . # Open nvim in the current directory (which is now the nvim config directory)
+  cd "$oldpwd" # Return to the original working directory after exiting nvim
+}
 
 # Exa/LS aliases
 alias ls='exa'                                                          # ls
