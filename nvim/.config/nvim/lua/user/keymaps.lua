@@ -13,6 +13,39 @@ local M = {}
 -- Disable Space bar since it'll be used as the leader key
 nnoremap("<space>", "<nop>")
 
+-- Window and Tmux navigation
+nnoremap("<C-j>", function()
+	if vim.fn.exists(":NvimTmuxNavigateDown") ~= 0 then
+		vim.cmd.NvimTmuxNavigateDown()
+	else
+		vim.cmd.wincmd("j")
+	end
+end)
+
+nnoremap("<C-k>", function()
+	if vim.fn.exists(":NvimTmuxNavigateUp") ~= 0 then
+		vim.cmd.NvimTmuxNavigateUp()
+	else
+		vim.cmd.wincmd("k")
+	end
+end)
+
+nnoremap("<C-l>", function()
+	if vim.fn.exists(":NvimTmuxNavigateRight") ~= 0 then
+		vim.cmd.NvimTmuxNavigateRight()
+	else
+		vim.cmd.wincmd("l")
+	end
+end)
+
+nnoremap("<C-h>", function()
+	if vim.fn.exists(":NvimTmuxNavigateLeft") ~= 0 then
+		vim.cmd.NvimTmuxNavigateLeft()
+	else
+		vim.cmd.wincmd("h")
+	end
+end)
+
 -- Swap between last two buffers
 nnoremap("<leader>'", "<C-^>", { desc = "Switch to last buffer" })
 
