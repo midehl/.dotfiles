@@ -106,6 +106,12 @@ function tmuxconfig() {
   nvim tmux.conf
   cd "$oldpwd"
 }
+function alacrittyconfig() {
+  local oldpwd=$(pwd)
+  cd $HOME/.config/alacritty/
+  nvim . 
+  cd "$oldpwd"
+}
 
 # Exa/LS aliases
 alias ls='exa'                                                          # ls
@@ -166,3 +172,4 @@ source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fpath+=${ZDOTDIR:-~}/.zsh_functions
