@@ -78,3 +78,12 @@ vim.opt.guicursor = {
 	"r-cr:hor20", --replace, cmd-line replace: horizontal bar cursor 20% height
 	"o:hor50", --operator--pending: horizontal bar cursor 50% height
 }
+
+-- Map Ctrl+f to tmux-sessionizer
+-- vim.api.nvim_set_keymap(
+-- 	"n",
+-- 	"<C-f>",
+-- 	":term $HOME/.local/scripts/tmux-sessionizer<CR>",
+-- 	{ noremap = true, silent = true }
+-- )
+-- TODO: make this work
