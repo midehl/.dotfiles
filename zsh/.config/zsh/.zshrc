@@ -81,9 +81,10 @@ compinit
  export GOPATH=$HOME/go
  export PATH=$PATH:$GOPATH/bin
  export PATH=$PATH:/usr/local/go/bin
- export PATH=$PATH:$HOME/.local/bin
- # script for syncing dotfiles
- export PATH=$PATH:$HOME/.dotfiles/bin
+ export PATH=$HOME/.local/bin:$PATH
+ export PATH=$HOME/.local//scripts:$PATH
+ # # script for syncing dotfiles
+ # export PATH=$PATH:$HOME/.dotfiles/bin
 
 
 # ALIASES 
@@ -122,11 +123,12 @@ alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all lis
 alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
 
 # specialty views
-alias lS='exa -1'                                                              # one column, just names
+alias lS='exa -1'                                                       # one column, just names
 alias lt='exa --tree --level=2'                                         # tree
 
 # CLI Tools
 eval $(thefuck --alias)
+bindkey -s ^f "tmux-sessionizer\n"
 
 # functions
 function ssh-lemon() {
