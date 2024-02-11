@@ -219,8 +219,9 @@ nnoremap("<leader>5", function()
 	harpoon_ui.nav_file(5)
 end)
 
--- Git keymaps --
-nnoremap("<leader>gb", ":Gitsigns toggle_current_line_blame<cr>")
+-- [[ Git keymaps ]] --
+nnoremap("<leader>gb", ":Gitsigns toggle_current_line_blame<CR>")
+nnoremap("<leader>gp", ":Gitsigns preview_hunk<CR>")
 nnoremap("<leader>gf", function()
 	local cmd = {
 		"sort",
@@ -241,7 +242,7 @@ nnoremap("<leader>gf", function()
 	end
 end, { desc = "Search [G]it [F]iles" })
 
--- Telescope keybinds --
+-- [[ Telescope keymaps ]]
 nnoremap("<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 nnoremap("<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 nnoremap("<leader>sb", require("telescope.builtin").buffers, { desc = "[S]earch Open [B]uffers" })
