@@ -45,7 +45,7 @@ SAVEHIST=10000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/jmiclat/.zshrc'
+zstyle :compinstall filename '/home/john/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -53,20 +53,20 @@ compinit
 
  # >>> conda initialize >>>
  # !! Contents within this block are managed by 'conda init' !!
- __conda_setup="$('/home/jmiclat/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+ __conda_setup="$('/home/john/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
  if [ $? -eq 0 ]; then
      eval "$__conda_setup"
  else
-     if [ -f "/home/jmiclat/miniconda3/etc/profile.d/conda.sh" ]; then
-         . "/home/jmiclat/miniconda3/etc/profile.d/conda.sh"
+     if [ -f "/home/john/miniconda3/etc/profile.d/conda.sh" ]; then
+         . "/home/john/miniconda3/etc/profile.d/conda.sh"
      else
-         export PATH="/home/jmiclat/miniconda3/bin:$PATH"
+         export PATH="/home/john/miniconda3/bin:$PATH"
      fi
  fi
  unset __conda_setup
  
- if [ -f "/home/jmiclat/miniconda3/etc/profile.d/mamba.sh" ]; then
-     . "/home/jmiclat/miniconda3/etc/profile.d/mamba.sh"
+ if [ -f "/home/john/miniconda3/etc/profile.d/mamba.sh" ]; then
+     . "/home/john/miniconda3/etc/profile.d/mamba.sh"
  fi
  # <<< conda initialize <<<
 
