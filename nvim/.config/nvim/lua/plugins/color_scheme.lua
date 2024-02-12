@@ -1,37 +1,51 @@
 return {
+	--[[ {
+		"rose-pine/nvim",
+		name = "rose-pine",
+		config = function()
+			vim.cmd.colorscheme("rose-pine")
+		end,
+	}, ]]
+	--[[ {
+		"rebelot/kanagawa.nvim",
+		config = function()
+			require("kanagawa").setup({})
 
-  {
-    'catppuccin/nvim',
-    config = function()
-      require('catppuccin').setup({
-        integrations = {
-          cmp = true,
-          gitsigns = true,
-          harpoon = true,
-          illuminate = true,
-          indent_blankline = {
-            enabled = false,
-            scope_color = 'sapphire',
-            colored_indent_levels = false,
-          },
-          mason = true,
-          native_lsp = { enabled = true },
-          notify = true,
-          nvimtree = true,
-          neotree = true,
-          symbols_outline = true,
-          telescope = true,
-          treesitter = true,
-          treesitter_context = true,
-        },
-      })
+			vim.cmd.colorscheme("kanagawa")
+		end,
+	}, ]]
+	{
+		"catppuccin/nvim",
+		config = function()
+			require("catppuccin").setup({
+				integrations = {
+					cmp = true,
+					gitsigns = true,
+					harpoon = true,
+					illuminate = true,
+					indent_blankline = {
+						enabled = false,
+						scope_color = "sapphire",
+						colored_indent_levels = false,
+					},
+					mason = true,
+					native_lsp = { enabled = true },
+					notify = true,
+					nvimtree = true,
+					neotree = true,
+					symbols_outline = true,
+					telescope = true,
+					treesitter = true,
+					treesitter_context = true,
+				},
+			})
 
-      vim.cmd.colorscheme('catppuccin-mocha')
+			vim.cmd.colorscheme("catppuccin-mocha")
 
-      -- Hide all semantic highlights until upstream issues are resolved (https://github.com/catppuccin/nvim/issues/480)
-      for _, group in ipairs(vim.fn.getcompletion('@lsp', 'highlight')) do
-        vim.api.nvim_set_hl(0, group, {})
-      end
-    end,
-  },
+			-- Hide all semantic highlights until upstream issues are resolved (https://github.com/catppuccin/nvim/issues/480)
+			for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+				vim.api.nvim_set_hl(0, group, {})
+			end
+		end,
+	},
 }
