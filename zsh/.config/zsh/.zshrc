@@ -45,7 +45,7 @@ SAVEHIST=10000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/john/.zshrc'
+zstyle :compinstall filename '/home/jmiclat/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -53,23 +53,30 @@ compinit
 
  # >>> conda initialize >>>
  # !! Contents within this block are managed by 'conda init' !!
- __conda_setup="$('/home/john/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+ __conda_setup="$('/home/jmiclat/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
  if [ $? -eq 0 ]; then
      eval "$__conda_setup"
  else
-     if [ -f "/home/john/miniconda3/etc/profile.d/conda.sh" ]; then
-         . "/home/john/miniconda3/etc/profile.d/conda.sh"
+     if [ -f "/home/jmiclat/miniconda3/etc/profile.d/conda.sh" ]; then
+         . "/home/jmiclat/miniconda3/etc/profile.d/conda.sh"
      else
-         export PATH="/home/john/miniconda3/bin:$PATH"
+         export PATH="/home/jmiclat/miniconda3/bin:$PATH"
      fi
  fi
  unset __conda_setup
  
- if [ -f "/home/john/miniconda3/etc/profile.d/mamba.sh" ]; then
-     . "/home/john/miniconda3/etc/profile.d/mamba.sh"
+ if [ -f "/home/jmiclat/miniconda3/etc/profile.d/mamba.sh" ]; then
+     . "/home/jmiclat/miniconda3/etc/profile.d/mamba.sh"
  fi
  # <<< conda initialize <<<
 
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
  # wayland on firefox
  export MOZ_ENABLE_WAYLAND=1
