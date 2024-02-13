@@ -102,7 +102,7 @@ export NVM_DIR="$HOME/.nvm"
 alias gs='git status'
 alias gd='git diff'
 alias ga='git add .'
-alias gm='git commit -m'
+alias gcm='git commit -m'
 alias gpr='git pull --rebase' # keep cleaner commit history
 alias gb='git branch'
 alias gco='git checkout'
@@ -110,6 +110,7 @@ alias gcb='git checkout -b'
 alias gm='git merge'
 alias gstash='git stash'
 alias gl='gitlog'
+alias gip='git push'
 
 alias dotfiles='cd $HOME/.dotfiles/'
 alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
