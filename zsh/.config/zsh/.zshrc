@@ -1,3 +1,5 @@
+#zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -95,6 +97,19 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # ALIASES 
+
+# lol lazy asl
+alias gs='git status'
+alias ga='git add .'
+alias gm='git commit -m'
+alias gpr='git pull --rebase' # keep cleaner commit history
+alias gb='git branch'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gm='git merge'
+alias gstash='git stash'
+alias gl='gitlog'
+
 alias dotfiles='cd $HOME/.dotfiles/'
 alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
 alias sshconfig="nvim $HOME/.ssh/config"
@@ -182,3 +197,5 @@ source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+#zprof
