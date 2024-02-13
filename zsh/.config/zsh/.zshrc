@@ -100,6 +100,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # lol lazy asl
 alias gs='git status'
+alias gd='git diff'
 alias ga='git add .'
 alias gm='git commit -m'
 alias gpr='git pull --rebase' # keep cleaner commit history
