@@ -77,8 +77,9 @@ vim.opt.guicursor = {
 	"i-ci-ve:ver25", --insert, cmd-line insert, visual-exclude: vertical box cursor 25% width
 	"r-cr:hor20", --replace, cmd-line replace: horizontal bar cursor 20% height
 	"o:hor50", --operator--pending: horizontal bar cursor 50% height
+	"a:blinkwait700-blinkoff400-blinkon250", -- All modes: blinking settings
+	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Showmatch: block cursor with specific blinking settings
 }
-
 -- Map Ctrl+f to tmux-sessionizer
 -- vim.api.nvim_set_keymap(
 -- 	"n",

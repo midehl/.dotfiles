@@ -11,10 +11,16 @@ fi
 export EDITOR="usr/local/bin/nvim"
 export VISUAL="usr/local/bin/nvim"
 
-## fzf setup
-export FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
-export FZF_DEFAULT_COMMAND='fd --type f'
-
+# fzf setup
+#export FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+# export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+# export FZF_DEFAULT_COMMAND='fd --type f'
+function fzf() { 
+  ( # run in subshell to not pollute top level shell environment
+    source $HOME/.config/fzf/
+    $(whence -p fzf) "$@"
+  )
+}
 # manpage highlighting
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -101,7 +107,8 @@ export NVM_DIR="$HOME/.nvm"
 # lol lazy asl
 alias gs='git status'
 alias gd='git diff'
-alias ga='git add .'
+alias ga='git add '
+alias gal='git add .'
 alias gcm='git commit -m'
 alias gpr='git pull --rebase' # keep cleaner commit history
 alias gb='git branch'
