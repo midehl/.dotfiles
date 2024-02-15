@@ -54,6 +54,9 @@ return {
 
 			vim.cmd.colorscheme("catppuccin-mocha")
 
+			-- set scope animation to use catppuccin-mocha colors
+			vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#f5c2e7", bg = "NONE", italic = true })
+
 			-- Hide all semantic highlights until upstream issues are resolved (https://github.com/catppuccin/nvim/issues/480)
 			for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
 				vim.api.nvim_set_hl(0, group, {})
