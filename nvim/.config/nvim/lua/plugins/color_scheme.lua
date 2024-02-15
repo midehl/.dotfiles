@@ -19,17 +19,28 @@ return {
 		config = function()
 			require("catppuccin").setup({
 				integrations = {
+					mini = true,
 					cmp = true,
 					gitsigns = true,
 					harpoon = true,
 					illuminate = true,
-					indent_blankline = {
-						enabled = false,
-						scope_color = "sapphire",
-						colored_indent_levels = false,
-					},
+					indent_blankline = { enabled = true },
+					--[[ indent_blankline = {
+	           enabled = false,
+	           scope_color = "sapphire",
+	           colored_indent_levels = false,
+	         }, ]]
 					mason = true,
-					native_lsp = { enabled = true },
+					-- native_lsp = { enabled = true },
+					native_lsp = {
+						enabled = true,
+						underlines = {
+							errors = { "undercurl" },
+							hints = { "undercurl" },
+							warnings = { "undercurl" },
+							information = { "undercurl" },
+						},
+					},
 					notify = true,
 					nvimtree = true,
 					neotree = true,
@@ -37,6 +48,7 @@ return {
 					telescope = true,
 					treesitter = true,
 					treesitter_context = true,
+					which_key = true,
 				},
 			})
 
