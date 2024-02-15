@@ -10,10 +10,10 @@ return {
 	{
 		"echasnovski/mini.indentscope",
 		version = false,
-		draw = {
-			delay = 50,
-		},
 		opts = {
+      draw = {
+        delay = 50,
+      },
 			symbol = "│",
 			options = { try_as_border = true },
 		},
