@@ -14,6 +14,9 @@ vim.opt.shiftwidth = 2
 --enable smart indenting (https://stackoverflow.com/questions/1204149/smart-wrap-in-vim)
 vim.opt.breakindent = true
 
+-- Set indentLine plugin to exclude 'alpha' filetype
+vim.g.indentLine_fileTypeExclude = { "alpha" }
+
 --enable incremental searching
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
