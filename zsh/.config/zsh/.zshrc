@@ -120,7 +120,7 @@ alias vim=nvim
 function nvimconfig() {
   local oldpwd=$(pwd) # Save the current working directory
   cd $HOME/.config/nvim # Change to the nvim config directory
-  nvim . # Open nvim in the current directory (which is now the nvim config directory)
+  nvim  # Open nvim in the current directory (which is now the nvim config directory)
   cd "$oldpwd" # Return to the original working directory after exiting nvim
 }
 function tmuxconfig() {
