@@ -7,20 +7,18 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# EXPORTS
-export EDITOR="usr/local/bin/nvim"
-export VISUAL="usr/local/bin/nvim"
+# -- [[ EXPORTS ]] 
+export VISUAL="/usr/local/bin/nvim"
+export EDITOR="/usr/bin/vim"
 
 # fzf setup
-#export FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
-# export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-# export FZF_DEFAULT_COMMAND='fd --type f'
 function fzf() { 
   ( # run in subshell to not pollute top level shell environment
     source $HOME/.config/fzf/
     $(whence -p fzf) "$@"
   )
 }
+
 # manpage highlighting
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -82,27 +80,19 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
  # wayland on firefox
  export MOZ_ENABLE_WAYLAND=1
 
  # PATH stuff
  export PATH=$PATH:/usr/games
-
  # golang
  export GOPATH=$HOME/go
  export PATH=$PATH:$GOPATH/bin
  export PATH=$PATH:/usr/local/go/bin
  export PATH=$HOME/.local/bin:$PATH
  export PATH=$HOME/.local//scripts:$PATH
- # # script for syncing dotfiles
- # export PATH=$PATH:$HOME/.dotfiles/bin
 
-
-# ALIASES 
+# -- [[ ALIASES ]] --
 
 # lol lazy asl
 alias gs='git status'
