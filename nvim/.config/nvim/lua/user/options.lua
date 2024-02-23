@@ -30,7 +30,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 --enable mouse mode
-vim.opt.mouse = "a"
+-- vim.opt.mouse = "a"
 
 --enable ignorecase + smartcase for better searching
 vim.opt.ignorecase = true
@@ -52,7 +52,7 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 
 --enable access to system clipboard
-vim.opt.clipboard = "unnamed,unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 
 --enable cursor line highlight
 vim.opt.cursorline = true
