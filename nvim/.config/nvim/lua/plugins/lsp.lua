@@ -119,6 +119,7 @@ return {
 					formatting.prettierd,
 					formatting.stylua,
 
+          --[[
 					-- diagnostics
 					diagnostics.eslint_d.with({
 						condition = function(utils)
@@ -132,6 +133,7 @@ return {
 							return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" })
 						end,
 					}),
+          --]]
 				},
 			})
 
