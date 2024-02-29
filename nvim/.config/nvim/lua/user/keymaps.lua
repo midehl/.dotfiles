@@ -91,7 +91,6 @@ nnoremap("<leader>S", function()
 end)
 
 -- Open Spectre for global find/replace for the word under the cursor in normal mode
--- TODO Fix, currently being overriden by Telescope
 nnoremap("<leader>sw", function()
 	require("spectre").open_visual({ select_word = true })
 end, { desc = "Search current word" })
@@ -106,7 +105,7 @@ nnoremap("U", "<C-r>")
 -- Turn off highlighted results
 nnoremap("<leader>no", "<cmd>noh<cr>")
 
--- Diagnostics
+-- [[ Diagnostics ]]
 
 -- Goto next diagnostic of any severity
 nnoremap("]d", function()
