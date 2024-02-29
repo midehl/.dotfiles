@@ -119,7 +119,7 @@ return {
 					formatting.prettierd,
 					formatting.stylua,
 
-          --[[
+					--[[
 					-- diagnostics
 					diagnostics.eslint_d.with({
 						condition = function(utils)
