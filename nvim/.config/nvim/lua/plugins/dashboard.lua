@@ -39,13 +39,7 @@ return {
 			}
 
 			-- Set Footer
-			local handle = io.popen("fortune")
-			local fortune = handle:read("*a")
-			if fortune == nil or fortune == "" then
-				fortune = "fix fortune"
-			end
-			handle:close()
-			dashboard.section.footer.val = fortune
+			require("alpha.themes.dashboard").section.footer.val = require("alpha.fortune")()
 
 			-- Was in the default in :h
 			dashboard.config.opts.noautocmd = true
