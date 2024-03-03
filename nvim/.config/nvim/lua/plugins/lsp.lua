@@ -13,6 +13,7 @@ return {
 			-- Neovim as a language server for LSP diagnostics, code actions, and formatting
 			-- Prettier, ESLint, etc.
 			"nvimtools/none-ls.nvim",
+			"nvimtools/none-ls-extras.nvim",
 
 			-- Additional lua configuration, makes nvim stuff amazing!
 			"folke/neodev.nvim",
@@ -109,7 +110,6 @@ return {
 
 			-- Configure LSP linting, formatting, diagnostics, and code actions
 			local formatting = null_ls.builtins.formatting
-			local diagnostics = null_ls.builtins.diagnostics
 			local code_actions = null_ls.builtins.code_actions
 
 			null_ls.setup({
@@ -121,18 +121,11 @@ return {
 					formatting.black, -- python
 
 					-- diagnostics
-					diagnostics.eslint_d.with({
-						condition = function(utils)
-							return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" })
-						end,
-					}),
+					require("none-ls.diagnostics.eslint_d"),
 
 					-- code actions
-					code_actions.eslint_d.with({
-						condition = function(utils)
-							return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" })
-						end,
-					}),
+					code_actions.gitsigns,
+					require("none-ls.code_actions.eslint_d"),
 				},
 			})
 
