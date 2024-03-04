@@ -119,6 +119,7 @@ return {
 					formatting.prettierd,
 					formatting.stylua,
 					formatting.black, -- python
+          formatting.isort, -- python import sorting
 
 					-- diagnostics
 					require("none-ls.diagnostics.eslint_d"),
