@@ -97,12 +97,13 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 # lol lazy asl
 alias gs='git status'
 alias gd='git diff'
-alias ga='git add '
+alias gad='git add '
 alias gal='git add .'
 alias gcm='git commit -m'
 alias gp='git pull'
 alias gpr='git pull --rebase' # keep cleaner commit history
 alias gb='git branch'
+alias gba='git branch -a'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gm='git merge'
