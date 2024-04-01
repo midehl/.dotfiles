@@ -22,7 +22,7 @@ return {
 			{ "j-hui/fidget.nvim", opts = {} },
 		},
 		config = function()
-			local null_ls = require("null-ls")
+			-- local null_ls = require("null-ls")
 
 			-- Have to load kemaps first
 			local map_lsp_keybinds = require("user.keymaps").map_lsp_keybinds
@@ -81,20 +81,27 @@ return {
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-			-- Set mode, buffer, and decription for each client attached to the lsp
-			local on_attach = function(_client, bufnr)
-				-- Pass current buffer to map lsp keybinds
-				map_lsp_keybinds(bufnr)
+			-- -- Set mode, buffer, and decription for each client attached to the lsp
+			-- local on_attach = function(_client, bufnr)
+			-- 	-- Pass current buffer to map lsp keybinds
+			-- 	map_lsp_keybinds(bufnr)
+			--
+			-- 	-- Create a command `:Format` local to the LSP buffer
+			-- 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+			-- 		vim.lsp.buf.format({
+			-- 			filter = function(format_client)
+			-- 				-- Use Prettier to format TS/JS if available instead of tsserver
+			-- 				return format_client.name ~= "tsserver" or not null_ls.is_registered("prettierd")
+			-- 			end,
+			-- 		})
+			-- 	end, { desc = "LSP: Format current buffer with LSP" })
+			-- end
 
-				-- Create a command `:Format` local to the LSP buffer
-				vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-					vim.lsp.buf.format({
-						filter = function(format_client)
-							-- Use Prettier to format TS/JS if available instead of tsserver
-							return format_client.name ~= "tsserver" or not null_ls.is_registered("prettier")
-						end,
-					})
-				end, { desc = "LSP: Format current buffer with LSP" })
+			-- Function to run when neovim connects to a Lsp client
+			---@diagnostic disable-next-line: unused-local
+			local on_attach = function(_client, buffer_number)
+				-- Pass the current buffer to map lsp keybinds
+				map_lsp_keybinds(buffer_number)
 			end
 
 			-- Iterate over servers and set them up
@@ -108,27 +115,27 @@ return {
 				})
 			end
 
-			-- Configure LSP linting, formatting, diagnostics, and code actions
-			local formatting = null_ls.builtins.formatting
-			local code_actions = null_ls.builtins.code_actions
-
-			null_ls.setup({
-				border = "rounded",
-				sources = {
-					-- formatting
-					formatting.prettierd,
-					formatting.stylua,
-					formatting.black, -- python
-          formatting.isort, -- python import sorting
-
-					-- diagnostics
-					require("none-ls.diagnostics.eslint_d"),
-
-					-- code actions
-					code_actions.gitsigns,
-					require("none-ls.code_actions.eslint_d"),
-				},
-			})
+			-- -- Configure LSP linting, formatting, diagnostics, and code actions
+			-- local formatting = null_ls.builtins.formatting
+			-- local code_actions = null_ls.builtins.code_actions
+			--
+			-- null_ls.setup({
+			--   border = "rounded",
+			--   sources = {
+			--     -- formatting
+			--     formatting.prettierd,
+			--     formatting.stylua,
+			--     formatting.black, -- python
+			--     formatting.isort, -- python import sorting
+			--
+			--     -- diagnostics
+			--     require("none-ls.diagnostics.eslint_d"),
+			--
+			--     -- code actions
+			--     code_actions.gitsigns,
+			--     require("none-ls.code_actions.eslint_d"),
+			--   },
+			-- })
 
 			-- Configure border for LspInfo ui
 			require("lspconfig.ui.windows").default_options.border = "rounded"
@@ -140,5 +147,24 @@ return {
 				},
 			})
 		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		opts = {
+			notify_on_error = true,
+			format_on_save = {
+				async = true,
+				timeout_ms = 500,
+				lsp_fallback = true,
+			},
+			formatters_by_ft = {
+				javascript = { { "prettierd", "prettier" } },
+				typescript = { { "prettierd", "prettier" } },
+				typescriptreact = { { "prettierd", "prettier" } },
+				lua = { "stylua" },
+			},
+		},
 	},
 }
