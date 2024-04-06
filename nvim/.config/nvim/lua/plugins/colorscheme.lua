@@ -16,7 +16,6 @@ return {
 	           colored_indent_levels = false,
 	         }, ]]
           mason = true,
-          -- native_lsp = { enabled = true },
           native_lsp = {
             enabled = true,
             underlines = {
