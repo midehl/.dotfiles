@@ -65,7 +65,7 @@ vim.opt.cursorline = true
 -- always keep 8 lines above/below cursor unless at the start/end of file
 vim.opt.scrolloff = 8
 -- and horizontally as well
-vim.opti.sidescrolloff = 8
+vim.opt.sidescrolloff = 8
 
 -- Set fold settings
 -- These options were reccommended by nvim-ufo
