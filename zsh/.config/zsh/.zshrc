@@ -177,6 +177,18 @@ function ssh-lemon() {
     fi
 }
 
+lg()
+{
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+
+    lazygit "$@"
+
+    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+    fi
+}
+
 # PLUGINS 
 # Additional completions
 fpath=($ZDOTDIR/plugins/zsh-completions/src $fpath)
