@@ -1,6 +1,6 @@
 return {
   "nvimdev/dashboard-nvim",
-  dependences = { "nvimdev/dashboard-nvim" },
+  dependencies = { "nvimdev/dashboard-nvim" },
   -- take exiting options and override the logo only
   opts = function(_, opts)
     local logo = [[
