@@ -177,8 +177,8 @@ function ssh-lemon() {
     fi
 }
 
-lg()
-{
+alias lzd='lazydocker'
+lg() {
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
 
     lazygit "$@"
