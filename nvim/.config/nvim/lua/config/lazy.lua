@@ -12,6 +12,9 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
+    -- [[ Coding Tools ]] --
+    { import = "lazyvim.plugins.extras.coding.native_snippets" },
+
     -- [[ Editor ]] --
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.aerial" },
