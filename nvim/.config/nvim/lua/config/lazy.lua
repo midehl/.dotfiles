@@ -31,6 +31,7 @@ require("lazy").setup({
     -- dev
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.docker" },
+    { import = "lazyvim.plugins.extras.lang.tex" },
 
     -- [[ UI ]] --
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
