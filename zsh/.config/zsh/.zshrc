@@ -109,7 +109,7 @@ alias gcb='git checkout -b'
 alias gm='git merge'
 alias gstash='git stash'
 alias gl='git log'
-alias gip='git push'
+alias gP='git push' # capitalize push for safety
 
 alias dotfiles='cd $HOME/.dotfiles/'
 alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
