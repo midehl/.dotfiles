@@ -11,13 +11,13 @@ fi
 export VISUAL="/usr/local/bin/nvim"
 export EDITOR="/usr/bin/vim"
 
-# fzf setup
-function fzf() { 
-  ( # run in subshell to not pollute top level shell environment
-    source $HOME/.config/fzf/
-    $(whence -p fzf) "$@"
-  )
-}
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
 
 # manpage highlighting
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -90,7 +90,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
  export PATH=$PATH:$GOPATH/bin
  export PATH=$PATH:/usr/local/go/bin
  export PATH=$HOME/.local/bin:$PATH
- export PATH=$HOME/.local//scripts:$PATH
+ export PATH=$HOME/.local/scripts:$PATH
 
 # -- [[ ALIASES ]] --
 
@@ -208,7 +208,6 @@ source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 #zprof
