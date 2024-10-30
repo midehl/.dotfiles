@@ -155,7 +155,7 @@ alias lS='exa -1'                                                       # one co
 alias lt='exa --tree --level=2'                                         # tree
 
 # CLI Tools
-eval $(thefuck --alias)
+eval $(thefuck --alias fk)
 bindkey -s ^f "tmux-sessionizer\n"
 
 # functions
