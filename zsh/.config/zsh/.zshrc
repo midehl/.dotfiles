@@ -20,13 +20,13 @@ export FZF_CTRL_R_OPTS="
 
 
 # manpage highlighting
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
+export LESS_TERMCAP_mb=$"\e[1;32m"
+export LESS_TERMCAP_md=$"\e[1;32m"
+export LESS_TERMCAP_me=$"\e[0m"
+export LESS_TERMCAP_se=$"\e[0m"
+export LESS_TERMCAP_so=$"\e[01;33m"
+export LESS_TERMCAP_ue=$"\e[0m"
+export LESS_TERMCAP_us=$"\e[1;4;31m"
 
 #rust
 source "$HOME/.cargo/env"
@@ -51,7 +51,7 @@ SAVEHIST=10000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/john/.zshrc'
+zstyle :compinstall filename "/home/$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -59,31 +59,31 @@ compinit
 
  # >>> conda initialize >>>
  # !! Contents within this block are managed by 'conda init' !!
- __conda_setup="$('/home/john/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+ __conda_setup="$("/home/$HOME/miniconda3/bin/conda" "shell.zsh" "hook" 2> /dev/null)"
  if [ $? -eq 0 ]; then
      eval "$__conda_setup"
  else
-     if [ -f "/home/john/miniconda3/etc/profile.d/conda.sh" ]; then
-         . "/home/john/miniconda3/etc/profile.d/conda.sh"
+     if [ -f "/home/$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+         . "/home/$HOME/miniconda3/etc/profile.d/conda.sh"
      else
-         export PATH="/home/john/miniconda3/bin:$PATH"
+         export PATH="/home/$HOME/miniconda3/bin:$PATH"
      fi
  fi
  unset __conda_setup
  
- if [ -f "/home/john/miniconda3/etc/profile.d/mamba.sh" ]; then
-     . "/home/john/miniconda3/etc/profile.d/mamba.sh"
+ if [ -f "/home/$HOME/miniconda3/etc/profile.d/mamba.sh" ]; then
+     . "/home/$HOME/miniconda3/etc/profile.d/mamba.sh"
  fi
  # <<< conda initialize <<<
 
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo "export PYENV_ROOT="$HOME/.pyenv"" >> ~/.zshrc
 echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
  # wayland on firefox
  export MOZ_ENABLE_WAYLAND=1
 
- # PATH stuff
+ #PATH stuff
  export PATH=$PATH:/usr/games
  # golang
  export GOPATH=$HOME/go
@@ -93,6 +93,10 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
  export PATH=$HOME/.local/scripts:$PATH
 
 # -- [[ ALIASES ]] --
+
+alias notes="cd $HOME/Notes && vim"
+alias notescd="cd $HOME/Notes"
+
 
 # lol lazy asl
 alias gs='git status'
@@ -113,6 +117,7 @@ alias gP='git push' # capitalize push for safety
 
 alias dotfiles='cd $HOME/.dotfiles/'
 alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
+alias zshup="source $HOME/.config/zsh/.zshrc"
 alias sshconfig="nvim $HOME/.ssh/config"
 alias swayconfig="nvim $HOME/.config/sway/config"
 alias cat="bat --paging=never"
