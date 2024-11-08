@@ -75,9 +75,9 @@ compinit
  fi
  # <<< conda initialize <<<
 
-echo "export PYENV_ROOT="$HOME/.pyenv"" >> ~/.zshrc
-echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+export PYENV_ROOT=/home/midel/.pyenv
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
  # wayland on firefox
  export MOZ_ENABLE_WAYLAND=1
