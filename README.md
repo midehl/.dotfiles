@@ -26,26 +26,35 @@ sudo pacman -S stow
 
 ## Basic Usage
 
-I'm assuming you've cloned this repo into home, i.e. at '~/.dotilfes` or something.
-We can easily create symlinks to the files in this directory to the equivalent locations in the home directory using:
+You should clone repo into your home directory, such as at ~/.dotfiles.
+
+Then, you can easily create symlinks for the files in this directory to their equivalent locations in the home directory using:
 
 ```bash
-stow .
+stow --dotfiles .
 ```
 
-To use stow, remove existing files otherwise it will error.
+I also have a script to update local dotfiles. Assuming `~/.local/scripts` is in your path:
+
+```sh
+sync-dots
+```
 
 ### How it Works
 
-GNU Stow walks the directory hierarchy of the directory passed as the first parameter to the `stow` command and creates symlinks to those files in the equivalent locations in the target directory.
+GNU Stow walks the directory hierarchy of the directory passed to stow and creates symlinks in the target directory to match the structure.
 
-The important thing it that the dotfiles directory **must have the same structure** as where the files would be placed under the home directory. This means you will need to have the equivalent subdirectory structure in your dotfiles folder so that all symbolic links get created in place.
+An important requirement is that the dotfiles directory must have the same structure as where the files would be placed in the home directory. To make this work with dotfiles, rename top-level directories in the .dotfiles folder with a dot- prefix, such as dot-config for .config. Running stow with the --dotfiles option will recognize these dot- prefixed directories and create symlinks to ~/.config, ~/.local, etc.
 
-By Default, `stow` assumes that the target directory is the parent directory of the one that you specified.
-
-This means that `stow .` is equivalent to:
+By default, stow assumes that the target directory is the parent directory of the one specified. Therefore, running:
 
 ```bash
+stow --dotfiles -t ~ .
+```
+
+is equivalent to:
+
+```sh
 stow --dir=~/.dotfiles --target=~/
 # OR
 stow -d ~/.dotfiles -t ~/
@@ -72,60 +81,10 @@ This will avoid linking the `.git` folder (**you should do this**), a folder cal
 
 ### Cleaning up the Symlinks
 
-If you want to delete the symlinks, add an extra parameter, `-D`. For example, continuing the prior one and we want to delete those symlinks, run:
-
-```bash
-stow -D .
-```
-
-## Don't forget to `stow` every time you sync
-
-If using `git` to store and commit config files to a repo, run `stow` each time you sync to **ensure** that any new config files get linked into the proper location.
-
-The following script, `sync-dotfiles` will automate this whole process. It will stash the current changes to your dotfiles folder, pull any new changes from the remote repo, pop the stashed changes, and then run `stow .`
-
-Consider keeping in a `bin` subfolder of your `~/.dotfiles` and add it to `PATH`.
+To delete the symlinks created by stow, use the -D option. For example, to remove the symlinks:
 
 ```sh
-
-#!/bin/sh
-
-# Sync dotfiles repo and ensure that dotfiles are tangled correctly afterward
-
-GREEN='\033[1;32m'
-BLUE='\033[1;34m'
-RED='\033[1;30m'
-NC='\033[0m'
-
-# Navigate to the directory of this script (generally ~/.dotfiles/.bin)
-cd $(dirname $(readlink -f $0))
-cd ..
-
-echo -e "${BLUE}Stashing existing changes...${NC}"
-stash_result=$(git stash push -m "sync-dotfiles: Before syncing dotfiles")
-needs_pop=1
-if [ "$stash_result" = "No local changes to save" ]; then
-    needs_pop=0
-fi
-
-echo -e "${BLUE}Pulling updates from dotfiles repo...${NC}"
-echo
-git pull origin master
-echo
-
-if [[ $needs_pop -eq 1 ]]; then
-    echo -e "${BLUE}Popping stashed changes...${NC}"
-    echo
-    git stash pop
-fi
-
-unmerged_files=$(git diff --name-only --diff-filter=U)
-if [[ ! -z $unmerged_files ]]; then
-   echo -e "${RED}The following files have merge conflicts after popping the stash:${NC}"
-   echo
-   printf %"s\n" $unmerged_files  # Ensure newlines are printed
-else
-   # Run stow to ensure all new dotfiles are linked
-   stow .
-fi
+stow -D --dotfiles .
 ```
+
+This will safely delete the symlinks created during setup without removing the actual files in `.dotfiles.`
