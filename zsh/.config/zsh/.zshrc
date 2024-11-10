@@ -95,6 +95,7 @@ eval "$(pyenv init -)"
 
 alias notes="cd $HOME/Notes && vim"
 alias notescd="cd $HOME/Notes"
+alias c=clear
 
 
 # lol lazy asl
