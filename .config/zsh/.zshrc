@@ -3,9 +3,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # -- [[ EXPORTS ]] 
 export VISUAL="/usr/local/bin/nvim"
@@ -50,7 +50,7 @@ SAVEHIST=10000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename "/home/$HOME/.zshrc"
+zstyle :compinstall filename "/$HOME/.config/zsh/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -58,26 +58,26 @@ compinit
 
  # >>> conda initialize >>>
  # !! Contents within this block are managed by 'conda init' !!
- __conda_setup="$("/home/$HOME/miniconda3/bin/conda" "shell.zsh" "hook" 2> /dev/null)"
+ __conda_setup="$("$HOME/miniconda3/bin/conda" "shell.zsh" "hook" 2> /dev/null)"
  if [ $? -eq 0 ]; then
      eval "$__conda_setup"
  else
-     if [ -f "/home/$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-         . "/home/$HOME/miniconda3/etc/profile.d/conda.sh"
+     if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+         . "$HOME/miniconda3/etc/profile.d/conda.sh"
      else
-         export PATH="/home/$HOME/miniconda3/bin:$PATH"
+         export PATH="$HOME/miniconda3/bin:$PATH"
      fi
  fi
  unset __conda_setup
  
- if [ -f "/home/$HOME/miniconda3/etc/profile.d/mamba.sh" ]; then
-     . "/home/$HOME/miniconda3/etc/profile.d/mamba.sh"
+ if [ -f "$HOME/miniconda3/etc/profile.d/mamba.sh" ]; then
+     . "$HOME/miniconda3/etc/profile.d/mamba.sh"
  fi
  # <<< conda initialize <<<
 
-echo "export PYENV_ROOT="$HOME/.pyenv"" >> ~/.zshrc
-echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+export PYENV_ROOT=/home/midel/.pyenv
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
  # wayland on firefox
  export MOZ_ENABLE_WAYLAND=1
@@ -95,6 +95,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
 alias notes="cd $HOME/Notes && vim"
 alias notescd="cd $HOME/Notes"
+alias c=clear
 
 
 # lol lazy asl
@@ -114,7 +115,7 @@ alias gstash='git stash'
 alias gl='git log'
 alias gP='git push' # capitalize push for safety
 
-alias dotfiles='cd $HOME/.dotfiles/'
+alias dotfiles="cd $HOME/.dotfiles/"
 alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
 alias zshup="source $HOME/.config/zsh/.zshrc"
 alias sshconfig="nvim $HOME/.ssh/config"
@@ -144,14 +145,13 @@ function alacrittyconfig() {
 # Exa/LS aliases
 alias ls='exa'                                                          # ls
 alias l='exa -lbF --git'                                                # list, size, type, git
-alias ll='exa -lbGF --git'                                             # long list
-alias llm='exa -lbGd --git --sort=modified'                            # long list, modified date sort
-alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
-alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
-
+alias ll='exa -lbGF --git'                                              # long list
+alias llm='exa -lbGd --git --sort=modified'                             # long list, modified date sort
+alias la='exa -lbhHigUmuSa --time-style=long-iso --git'                 # all list
+alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git'                # all list
 # specialty views
 alias lS='exa -1'                                                       # one column, just names
-alias lt='exa --tree --level=2'                                         # tree
+alias lt='exa --tree --level=3'                                         # tree
 
 # CLI Tools
 eval $(thefuck --alias fk)
@@ -200,18 +200,21 @@ fpath=($ZDOTDIR/plugins/zsh-completions/src $fpath)
 # Auto suggestions
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # bind ctrl+space to auto suggest accept
-bindkey '^ ' autosuggest-accept
+bindkey '^e' autosuggest-accept
 
 # syntax highlighting
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # themes
-source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
+# source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+# [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+eval "$(starship init zsh)"
 
 #zprof
