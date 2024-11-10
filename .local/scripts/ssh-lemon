@@ -1,0 +1,22 @@
+#!/bin/bash
+
+LEMONADE_PID_FILE="$HOME/.lemonade_pid"
+
+# Start Lemonade server if not running
+if ! pgrep -f "lemonade server" > /dev/null; then
+    echo "Starting Lemonade server..."
+    lemonade server > /dev/null 2>&1 &
+    echo $! > "$LEMONADE_PID_FILE"
+else
+    echo "Lemonade server is already running."
+fi
+
+# SSH into the remote machine
+ssh "$@"
+
+# Stop Lemonade server if it was started by this script
+if [ -f "$LEMONADE_PID_FILE" ]; then
+    kill $(cat "$LEMONADE_PID_FILE")
+    rm "$LEMONADE_PID_FILE"
+    echo "Lemonade server stopped."
+fi
