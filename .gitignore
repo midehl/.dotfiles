@@ -1,3 +1,1 @@
-nvim/.config/nvim/lazy-lock.json
-zsh/.config/zsh/.zcompdump
-zsh/.config/zsh/plugins/zsh-completions/
+.config/zsh/plugins/zsh-completions
