@@ -58,20 +58,20 @@ compinit
 
  # >>> conda initialize >>>
  # !! Contents within this block are managed by 'conda init' !!
- __conda_setup="$("/home/$HOME/miniconda3/bin/conda" "shell.zsh" "hook" 2> /dev/null)"
+ __conda_setup="$("$HOME/miniconda3/bin/conda" "shell.zsh" "hook" 2> /dev/null)"
  if [ $? -eq 0 ]; then
      eval "$__conda_setup"
  else
-     if [ -f "/home/$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-         . "/home/$HOME/miniconda3/etc/profile.d/conda.sh"
+     if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+         . "$HOME/miniconda3/etc/profile.d/conda.sh"
      else
-         export PATH="/home/$HOME/miniconda3/bin:$PATH"
+         export PATH="$HOME/miniconda3/bin:$PATH"
      fi
  fi
  unset __conda_setup
  
- if [ -f "/home/$HOME/miniconda3/etc/profile.d/mamba.sh" ]; then
-     . "/home/$HOME/miniconda3/etc/profile.d/mamba.sh"
+ if [ -f "$HOME/miniconda3/etc/profile.d/mamba.sh" ]; then
+     . "$HOME/miniconda3/etc/profile.d/mamba.sh"
  fi
  # <<< conda initialize <<<
 
@@ -114,7 +114,7 @@ alias gstash='git stash'
 alias gl='git log'
 alias gP='git push' # capitalize push for safety
 
-alias dotfiles='cd $HOME/.dotfiles/'
+alias dotfiles="cd $HOME/.dotfiles/"
 alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
 alias zshup="source $HOME/.config/zsh/.zshrc"
 alias sshconfig="nvim $HOME/.ssh/config"
