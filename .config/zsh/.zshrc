@@ -8,6 +8,7 @@ source $ZDOTDIR/aliases.zsh
 export VISUAL="/usr/local/bin/nvim"
 export EDITOR="/usr/bin/vim"
 
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 export FZF_CTRL_R_OPTS="
@@ -50,6 +51,7 @@ bindkey -v
 zstyle :compinstall filename "/$HOME/.config/zsh/.zshrc"
 
 autoload -Uz compinit
+autoload -U colors && colors
 compinit
 # End of lines added by compinstall
 
@@ -148,6 +150,9 @@ lg() {
 }
 
 # PLUGINS 
+
+source $ZDOTDIR/plugins/colored-manpages.zsh
+
 # Additional completions
 fpath=($ZDOTDIR/plugins/zsh-completions/src $fpath)
 
