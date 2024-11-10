@@ -1,7 +1,6 @@
 #zmodload zsh/zprof
 
 source $ZDOTDIR/zsh_aliases.zsh
-source $ZDOTDIR/zsh_functions.zsh
 
 # -- [[ EXPORTS ]] 
 export VISUAL="$(which nvim)"
