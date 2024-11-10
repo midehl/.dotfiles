@@ -6,7 +6,7 @@ if [[ $# -eq 1 ]]; then
   selected=$1
 else
   selected=$( (
-    eval find ~/personal ~/ ~/.dotfiles ~/.dotfiles/bin/.local/ -mindepth 1 -maxdepth 1 -type d $EXCLUDE_PATTERN
+    eval find ~/personal ~/ ~/.dotfiles ~/.dotfiles/.local/ -mindepth 1 -maxdepth 1 -type d $EXCLUDE_PATTERN
     eval find ~/school -type d $EXCLUDE_PATTERN
   ) | fzf)
 fi
