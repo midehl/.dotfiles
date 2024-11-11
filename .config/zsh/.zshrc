@@ -21,8 +21,6 @@ export FZF_CTRL_R_OPTS="
  export PATH=$HOME/.local/bin:$PATH
  export PATH=$HOME/.local/scripts:$PATH
 
-#rust
-fpath=(~/.cargo/bin $fpath)
 
 
 source /usr/share/nvm/init-nvm.sh
