@@ -21,6 +21,11 @@ export FZF_CTRL_R_OPTS="
 # -- [[ Zsh Options ]]
 setopt autocd nomatch 
 setopt interactive_comments
+setopt hist_ignore_dups  # don't record duplicate commands in history
+setopt share_history     # share command history across all sessions
+setopt hist_expire_dups_first # remove older duplicates from the history
+setopt hist_find_no_dups # ignore duplicates when searching in history
+setopt correct # offer spell checking
 unsetopt BEEP # beeping is annoying
 HISTFILE=~/.histfile
 HISTSIZE=10000
