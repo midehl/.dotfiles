@@ -4,11 +4,17 @@ alias notescd="cd $HOME/Notes"
 alias c=clear
 alias t=tmux
 alias ta='tmux attach -t'
-alias d=docker
 alias rm=trash-put
 alias cat="bat --paging=never"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias vim=nvim
+alias d=docker
+function dclear() {
+  docker ps -a -q | xargs docker kill -f
+  docker ps -a -q | xargs docker rm -f
+  docker images | awk '{print $3}' | xargs docker rmi -f
+  docker volume prune -f
+}
 function take() {
   mkdir -p "$1"
   cd "$1"
