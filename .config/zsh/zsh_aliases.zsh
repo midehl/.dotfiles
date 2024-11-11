@@ -2,11 +2,13 @@
 alias notes="cd $HOME/Notes && vim"
 alias notescd="cd $HOME/Notes"
 alias c=clear
-alias lzd='lazydocker'
 alias t=tmux
 alias ta='tmux attach -t'
 alias d=docker
 alias rm=trash-put
+alias cat="bat --paging=never"
+alias sd="cd ~ && cd \$(find * -type d | fzf)"
+alias vim=nvim
 
 # GIT ------------------------------
 # Status
@@ -35,17 +37,6 @@ alias gm='git merge'
 # Other
 alias gstash='git stash'
 
-# Go places lol------------------------------
-alias dotfiles="cd $HOME/.dotfiles/"
-alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
-alias zshup="source $HOME/.config/zsh/.zshrc"
-alias sshconfig="nvim $HOME/.ssh/config"
-alias swayconfig="nvim $HOME/.config/sway/config"
-alias cat="bat --paging=never"
-alias sd="cd ~ && cd \$(find * -type d | fzf)"
-alias vim=nvim
-
-
 # Exa/LS------------------------------
 alias ls='exa'                                                          # ls
 alias l='exa -lbF --git'                                                # list, size, type, git
@@ -56,3 +47,25 @@ alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git'                # all li
 # specialty views
 alias lS='exa -1'                                                       # one column, just names
 alias lt='exa --tree --level=3'                                         # tree
+
+# Configs------------------------------
+alias dotfiles="cd $HOME/.dotfiles/"
+alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
+alias zshup="source $HOME/.config/zsh/.zshrc"
+alias sshconfig="nvim $HOME/.ssh/config"
+alias nvimconfig="nvim $HOME/.config/nvim"
+alias tmuxconfig="nvim $HOME/.config/tmux"
+alias alacrittyconfig="nvim $HOME/.config/alacritty"
+
+# Lazy------------------------------
+alias lzd='lazydocker'
+function lg() {
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+
+    lazygit "$@"
+
+    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+    fi
+}

@@ -68,41 +68,12 @@ export PYENV_ROOT=/home/midel/.pyenv
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-function nvimconfig() {
-  local oldpwd=$(pwd) # Save the current working directory
-  cd $HOME/.config/nvim # Change to the nvim config directory
-  nvim  # Open nvim in the current directory (which is now the nvim config directory)
-  cd "$oldpwd" # Return to the original working directory after exiting nvim
-}
-function tmuxconfig() {
-  local oldpwd=$(pwd) 
-  cd $HOME/.config/tmux/
-  nvim tmux.conf
-  cd "$oldpwd"
-}
-function alacrittyconfig() {
-  local oldpwd=$(pwd)
-  cd $HOME/.config/alacritty/
-  nvim . 
-  cd "$oldpwd"
-}
-
 # CLI Tools
 eval $(thefuck --alias fk)
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey '^e' autosuggest-accept
 
 
-lg() {
-    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
-
-    lazygit "$@"
-
-    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
-    fi
-}
 
 # -- [[ PLUGIN Loading ]] -- 
 
