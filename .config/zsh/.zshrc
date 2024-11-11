@@ -21,59 +21,30 @@ export FZF_CTRL_R_OPTS="
  export PATH=$HOME/.local/bin:$PATH
  export PATH=$HOME/.local/scripts:$PATH
 
-
-
 source /usr/share/nvm/init-nvm.sh
 
-# some useful options (man zshoptions)
+# -- [[ Zsh Options ]]
 setopt autocd nomatch 
 setopt interactive_comments
-# BEEPING IS ANNOYING
-unsetopt BEEP
-
-# Lines configured by zsh-newuser-install
+unsetopt BEEP # beeping is annoying
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-bindkey -v
+bindkey -v # enable Vi mode
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename "/$HOME/.config/zsh/.zshrc"
-
 autoload -Uz compinit
 autoload -U colors && colors
 compinit
 # End of lines added by compinstall
 
- # >>> conda initialize >>>
- # !! Contents within this block are managed by 'conda init' !!
- __conda_setup="$("$HOME/miniconda3/bin/conda" "shell.zsh" "hook" 2> /dev/null)"
- if [ $? -eq 0 ]; then
-     eval "$__conda_setup"
- else
-     if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-         . "$HOME/miniconda3/etc/profile.d/conda.sh"
-     else
-         export PATH="$HOME/miniconda3/bin:$PATH"
-     fi
- fi
- unset __conda_setup
- 
- if [ -f "$HOME/miniconda3/etc/profile.d/mamba.sh" ]; then
-     . "$HOME/miniconda3/etc/profile.d/mamba.sh"
- fi
- # <<< conda initialize <<<
-
-export PYENV_ROOT=/home/midel/.pyenv
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+source $ZDOTDIR/python.zsh
 
 # CLI Tools
 eval $(thefuck --alias fk)
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey '^e' autosuggest-accept
-
-
 
 # -- [[ PLUGIN Loading ]] -- 
 
