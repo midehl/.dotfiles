@@ -38,8 +38,8 @@ autoload -U colors && colors
 compinit
 # End of lines added by compinstall
 
-source /usr/share/nvm/init-nvm.sh
-source $ZDOTDIR/python.zsh
+eval "$(/usr/bin/mise activate zsh)"
+#source $ZDOTDIR/python.zsh
 
 # -- [[ PLUGINS ]] -- 
 source $ZDOTDIR/plugins/colored-manpages.zsh
