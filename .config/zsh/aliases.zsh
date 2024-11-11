@@ -56,6 +56,7 @@ alias lt='exa --tree --level=3'                                         # tree
 alias dotfiles="cd $HOME/.dotfiles/"
 alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
 alias zshup="source $HOME/.config/zsh/.zshrc"
+alias zalias="nvim $HOME/.config/zsh/aliases.zsh"
 alias sshconfig="nvim $HOME/.ssh/config"
 alias nvimconfig="nvim $HOME/.config/nvim"
 alias tmuxconfig="nvim $HOME/.config/tmux"
