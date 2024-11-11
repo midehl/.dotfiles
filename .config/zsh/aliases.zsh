@@ -9,6 +9,10 @@ alias rm=trash-put
 alias cat="bat --paging=never"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias vim=nvim
+function take() {
+  mkdir -p "$1"
+  cd "$1"
+}
 
 # GIT ------------------------------
 # Status
@@ -26,7 +30,7 @@ alias gcm='git commit -m'
 alias gp='git pull'
 alias gP='git push' # capitalize push for safety
 alias gpf='git push --force-with-lease'
-alias gpr='git pull --rebase' # keep cleaner commit history
+alias gprb='git pull --rebase' # keep cleaner commit history
 # GIT Branch
 alias gb='git branch'
 alias gba='git branch -a'
