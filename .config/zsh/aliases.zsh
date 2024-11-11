@@ -1,6 +1,4 @@
 # MISC ------------------------------
-alias notes="cd $HOME/Notes && vim"
-alias notescd="cd $HOME/Notes"
 alias c=clear
 alias t=tmux
 alias ta='tmux attach -t'
@@ -19,6 +17,14 @@ function take() {
   mkdir -p "$1"
   cd "$1"
 }
+alias notes="cd $HOME/Notes && nvim"
+alias notescd="cd $HOME/Notes"
+function note() {
+  echo "date: $(date)" >> $HOME/Notes/atlas/quicklist.md
+  echo "$@" >> $HOME/Notes/atlas/quicklist.md
+  echo "" >> $HOME/Notes/atlas/quicklist.md
+}
+alias show_notes="bat $HOME/Notes/atlas/quicklist.md --paging=never"
 
 # GIT ------------------------------
 # Status
