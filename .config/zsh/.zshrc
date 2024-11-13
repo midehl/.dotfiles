@@ -47,6 +47,7 @@ source $ZDOTDIR/plugins/colored-manpages.zsh
 fpath=($ZDOTDIR/plugins/zsh-completions/src $fpath)
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # -- [[ Configure Prompt ]]
