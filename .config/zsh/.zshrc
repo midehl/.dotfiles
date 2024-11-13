@@ -17,6 +17,7 @@ export FZF_CTRL_R_OPTS="
  export PATH=$PATH:$GOPATH/bin
  export PATH=$PATH:/usr/local/go/bin
  export PATH=$HOME/.local/scripts:$PATH
+ export PATH=$HOME/.local/bin:$PATH
 
 # -- [[ Zsh Options ]]
 setopt autocd nomatch 
