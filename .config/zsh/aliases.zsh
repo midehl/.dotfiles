@@ -28,7 +28,32 @@ alias show_notes="bat $HOME/Notes/atlas/quicklist.md --paging=never"
 
 # GIT ------------------------------
 # Status
-alias ff='gpr && git pull --ff-only'
+#alias ff='gpr && git pull --ff-only'
+function ff() {
+  # prune remote-tracking branches that have been deleted on the remote
+  git fetch -p
+
+  # avoid deletion on certain (common) branches
+  # rare case bc these should (assumingly) always have a remote
+  local protected_branches=("main" "master" "develop" "staging")
+  local exclude_pattern=$(printf "|%s" "${protected_branches[@]}")
+  exclude_pattern=${exclude_pattern:1}
+
+  # list local branches with no upstream and exclude protected branches
+  local branches_to_delete=$(git branch -vv | awk '/: gone]/{print $1}' | grep -vE "^(${exclude_pattern})$")
+  if [[ -n "$branches_to_delete" ]]; then
+    echo "The following branches have no upstream and will be deleted:"
+    echo "$branches_to_delete"
+    # Note: Confirmation is Zsh syntax and may not work on other shells
+    echo -n "Are you sure you want to delete these branches? (y/N) "
+    read confirmation
+    if [[ "$confirmation" =~ ^[Yy]$ ]]; then
+      echo "$branches_to_delete" | xargs -n 1 git branch -d
+    else
+      echo "Branch deletion aborted."
+    fi
+  fi
+}
 alias gs='git status'
 alias gl='git log --all --graph --format=oneline'
 alias gd='git diff'
