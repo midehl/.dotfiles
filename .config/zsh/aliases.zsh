@@ -101,7 +101,7 @@ alias alacrittyconfig="nvim $HOME/.config/alacritty"
 
 # Lazy------------------------------
 alias lzd='lazydocker'
-function lg() {
+function gg() {
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
 
     lazygit "$@"
