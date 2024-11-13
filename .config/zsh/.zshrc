@@ -31,7 +31,7 @@ unsetopt BEEP # beeping is annoying
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-bindkey -v # enable Vi mode
+#bindkey -v # enable Vi mode
 # The following lines were added by compinstall
 zstyle :compinstall filename "/$HOME/.config/zsh/.zshrc"
 autoload -Uz compinit
