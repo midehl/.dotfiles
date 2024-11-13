@@ -30,8 +30,40 @@ alias show_notes="bat $HOME/Notes/atlas/quicklist.md --paging=never"
 # Status
 #alias ff='gpr && git pull --ff-only'
 function ff() {
+  local usage="Usage: ff [-s|--skip-deletion]
+  
+Options:
+  -s, --skip-deletion    Skip deleting local branches with deleted upstreams.
+  -h, --help             Display this help message."
+
+  local skip_deletion=false
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -s|--skip-deletion)
+        skip_deletion=true
+        shift
+        ;;
+      -h|--help)
+        echo "$usage"
+        return 0
+        ;;
+      *)
+        echo "Unknown option: $1"
+        echo "$usage"
+        return 1
+        ;;
+    esac
+  done
+
   # prune remote-tracking branches that have been deleted on the remote
   git fetch -p
+  # then, update our branch
+  git pull --rebase
+  if $skip_deletion; then
+    echo "Skipping branch cleanup."
+    return 0
+  fi
 
   # avoid deletion on certain (common) branches
   # rare case bc these should (assumingly) always have a remote
