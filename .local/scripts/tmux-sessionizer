@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Inspired from:
+# https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
+
 EXCLUDE_PATTERN='-not -path "*/.git*" -not -path "*/node_modules*" -not -path "*/.cache*" -not -path "*/.nvm*" -not -path "*/.zoom"'
 
 if [[ $# -eq 1 ]]; then
@@ -16,7 +19,6 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-echo $selected_name
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
