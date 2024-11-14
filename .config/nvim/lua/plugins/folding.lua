@@ -69,6 +69,9 @@ return {
         if ft == "dashboard" then
           return ""
         end
+        if ft == "conf" then
+          return ""
+        end
         if ft == "log" then
           return ""
         end
