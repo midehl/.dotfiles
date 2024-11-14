@@ -15,6 +15,7 @@ require("lazy").setup({
     -- [[ Editor ]] --
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.aerial" },
+    { import = "lazyvim.plugins.extras.coding.mini-surround" },
 
     -- [[ Langs ]] --
     { import = "lazyvim.plugins.extras.lang.python" },
