@@ -64,24 +64,55 @@ return {
         -- use `:UfoInspect` to get see available fold kinds
       },
       open_fold_hl_timeout = 800,
+
       provider_selector = function(bufnr, ft, buftype)
-        -- PERF disable folds on `log`, and only use `indent` for `bib` files
-        if ft == "dashboard" or ft == "conf" or ft == "log" then
-          return ""
-        end
-        -- ufo accepts only two kinds as priority, see https://github.com/kevinhwang91/nvim-ufo/issues/256
-        if ft == "" or buftype ~= "" or vim.startswith(ft, "git") or ft == "applescript" then
+        -- Disable folding for specific filetypes or buffer types
+        if ft == "dashboard" or ft == "log" or buftype ~= "" then
           return "indent"
         end
-        -- Check if Treesitter is available for this filetype otherwise fallback to indent
-        local has_ts = pcall(require("nvim-treesitter.parsers").get_parser, bufnr)
-        if has_ts then
+
+        -- Check if LSP is available for this buffer
+        local lsp_clients = vim.lsp.get_clients({ bufnr = bufnr })
+        local lsp_available = #lsp_clients > 0
+
+        -- Check if Treesitter is available and has a parser for this buffer
+        local treesitter_available = false
+        local ok, ts = pcall(require, "nvim-treesitter.parsers")
+        if ok then
+          local parser = ts.get_parser(bufnr, ft)
+          treesitter_available = parser ~= nil
+        end
+
+        -- Select providers based on availability
+        if lsp_available and treesitter_available then
           return { "lsp", "treesitter" }
+        elseif lsp_available then
+          return "lsp"
+        elseif treesitter_available then
+          return "treesitter"
         else
           return "indent"
         end
-        -- return { "lsp", "treesitter" }
       end,
+
+      -- provider_selector = function(bufnr, ft, buftype)
+      --   -- PERF disable folds on `log`, and only use `indent` for `bib` files
+      --   if ft == "dashboard" or ft == "conf" or ft == "log" then
+      --     return ""
+      --   end
+      --   -- ufo accepts only two kinds as priority, see https://github.com/kevinhwang91/nvim-ufo/issues/256
+      --   if ft == "" or buftype ~= "" or vim.startswith(ft, "git") or ft == "applescript" then
+      --     return "indent"
+      --   end
+      --   -- Check if Treesitter is available for this filetype otherwise fallback to indent
+      --   local has_ts = pcall(require("nvim-treesitter.parsers").get_parser, bufnr)
+      --   if has_ts then
+      --     return { "lsp", "treesitter" }
+      --   else
+      --     return "indent"
+      --   end
+      --   -- return { "lsp", "treesitter" }
+      -- end,
       -- show folds with number of folded lines instead of just the icon
       fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
         local hlgroup = "NonText"
