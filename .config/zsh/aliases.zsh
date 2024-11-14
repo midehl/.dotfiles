@@ -6,6 +6,7 @@ alias rm=trash-put
 alias cat="bat --paging=never"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias vim=nvim
+alias v=nvim
 alias d=docker
 function dclear() {
   docker ps -a -q | xargs docker kill -f
