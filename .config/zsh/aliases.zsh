@@ -20,9 +20,9 @@ function take() {
 alias notes="cd $HOME/Notes && nvim"
 alias notescd="cd $HOME/Notes"
 function note() {
-  echo "date: $(date)" >> $HOME/Notes/atlas/quicklist.md
-  echo "$@" >> $HOME/Notes/atlas/quicklist.md
-  echo "" >> $HOME/Notes/atlas/quicklist.md
+  echo "date: $(date)" >> $HOME/Notes/atlas/Quicklist.md
+  echo "$@" >> $HOME/Notes/atlas/Quicklist.md
+  echo "" >> $HOME/Notes/atlas/Quicklist.md
 }
 alias show_notes="bat $HOME/Notes/atlas/quicklist.md --paging=never"
 
