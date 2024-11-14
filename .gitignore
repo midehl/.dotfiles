@@ -1,4 +1,5 @@
 .config/zsh/plugins/zsh-completions/*
 .config/zsh/.zcompdump
 
-.config/tmux/plugins
+.config/tmux/plugins/*
+!.config/tmux/plugins/.gitkeep
