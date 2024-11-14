@@ -68,7 +68,7 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
 -- Set fold settings
--- These options were reccommended by nvim-ufo
+-- These options were recommended by nvim-ufo
 -- See: https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
 vim.opt.foldcolumn = "0"
 vim.opt.foldlevel = 99
