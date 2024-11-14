@@ -64,22 +64,23 @@ return {
         -- use `:UfoInspect` to get see available fold kinds
       },
       open_fold_hl_timeout = 800,
-      provider_selector = function(_, ft, buftype)
+      provider_selector = function(bufnr, ft, buftype)
         -- PERF disable folds on `log`, and only use `indent` for `bib` files
-        if ft == "dashboard" then
-          return ""
-        end
-        if ft == "conf" then
-          return ""
-        end
-        if ft == "log" then
+        if ft == "dashboard" or ft == "conf" or ft == "log" then
           return ""
         end
         -- ufo accepts only two kinds as priority, see https://github.com/kevinhwang91/nvim-ufo/issues/256
         if ft == "" or buftype ~= "" or vim.startswith(ft, "git") or ft == "applescript" then
           return "indent"
         end
-        return { "lsp", "treesitter" }
+        -- Check if Treesitter is available for this filetype otherwise fallback to indent
+        local has_ts = pcall(require("nvim-treesitter.parsers").get_parser, bufnr)
+        if has_ts then
+          return { "lsp", "treesitter" }
+        else
+          return "indent"
+        end
+        -- return { "lsp", "treesitter" }
       end,
       -- show folds with number of folded lines instead of just the icon
       fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
