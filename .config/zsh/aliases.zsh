@@ -124,13 +124,14 @@ alias lt='exa --tree --level=3'                                         # tree
 
 # Configs------------------------------
 alias dotfiles="cd $HOME/.dotfiles/"
-alias zshconfig="nvim $HOME/.config/zsh/.zshrc"
+alias zshconf="nvim $HOME/.config/zsh/.zshrc"
 alias zshup="source $HOME/.config/zsh/.zshrc"
 alias zalias="nvim $HOME/.config/zsh/aliases.zsh"
-alias sshconfig="nvim $HOME/.ssh/config"
-alias nvimconfig="nvim $HOME/.config/nvim"
-alias tmuxconfig="nvim $HOME/.config/tmux"
-alias alacrittyconfig="nvim $HOME/.config/alacritty"
+alias sshconf="nvim $HOME/.ssh/config"
+alias nvimconf="nvim $HOME/.config/nvim"
+alias tmuxconf="nvim $HOME/.config/tmux/tmux.conf"
+alias kittyconf="nvim $HOME/.config/kitty/kitty.conf"
+alias alacrittyconf="nvim $HOME/.config/alacritty/alacritty.toml"
 
 # Lazy------------------------------
 alias lzd='lazydocker'
