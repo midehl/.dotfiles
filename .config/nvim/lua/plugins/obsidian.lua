@@ -24,5 +24,6 @@ return {
         path = "~/Notes",
       },
     },
+    ui = { enable = false },
   },
 }

@@ -66,6 +66,9 @@ return {
       open_fold_hl_timeout = 800,
       provider_selector = function(_, ft, buftype)
         -- PERF disable folds on `log`, and only use `indent` for `bib` files
+        if ft == "dashboard" then
+          return ""
+        end
         if ft == "log" then
           return ""
         end
