@@ -9,9 +9,9 @@ alias vim=nvim
 alias v=nvim
 alias d=docker
 function dclear() {
-  docker ps -q | xargs docker kill
-  docker ps -a -q | xargs docker rm -f
-  docker images -q | xargs docker rmi -f
+  docker ps -q | xargs -r docker kill
+  docker ps -a -q | xargs -r docker rm -f
+  docker images -q | xargs -r docker rmi -f
   docker volume prune -f
 }
 function take() {
