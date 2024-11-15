@@ -25,7 +25,7 @@ function note() {
   echo "$@" >> $HOME/Notes/atlas/Quicklist.md
   echo "" >> $HOME/Notes/atlas/Quicklist.md
 }
-alias show_notes="bat $HOME/Notes/atlas/quicklist.md --paging=never"
+alias show_notes="bat $HOME/Notes/atlas/Quicklist.md --paging=never"
 
 # GIT ------------------------------
 # Status
