@@ -1,7 +1,7 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # BEGIN_KITTY_THEME
-# Rosé Pine
+# Catppuccin-Mocha
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -24,4 +24,4 @@ background_opacity 0.8
 
 # auto start tmux or attach
 # great when used in combination with tmux-resurrect
-shell zsh --login -c "tmux attach || tmux"
+#shell zsh --login -c "tmux attach || tmux"
