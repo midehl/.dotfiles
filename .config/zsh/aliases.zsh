@@ -20,7 +20,8 @@ function take() {
 }
 # Mnemonic: 'oo' - 'Obsidian Open'
 alias oo="cd $HOME/Notes && nvim"
-alias ogo="cd $HOME/Notes"
+# Mnemonic: 'oo' - 'Obisidian Open Directory'
+alias ood="cd $HOME/Notes"
 function note() {
   echo "date: $(date)" >> $HOME/Notes/atlas/Quicklist.md
   echo "$@" >> $HOME/Notes/atlas/Quicklist.md
