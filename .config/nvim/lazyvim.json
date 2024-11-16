@@ -1,6 +1,7 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.lang.clangd"
+    "lazyvim.plugins.extras.lang.clangd",
+    "lazyvim.plugins.extras.lang.toml"
   ],
   "news": {
     "NEWS.md": "7107"
