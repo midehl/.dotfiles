@@ -18,8 +18,9 @@ function take() {
   mkdir -p "$1"
   cd "$1"
 }
-alias notes="cd $HOME/Notes && nvim"
-alias notescd="cd $HOME/Notes"
+# Mnemonic: 'oo' - 'Obsidian Open'
+alias oo="cd $HOME/Notes && nvim"
+alias ogo="cd $HOME/Notes"
 function note() {
   echo "date: $(date)" >> $HOME/Notes/atlas/Quicklist.md
   echo "$@" >> $HOME/Notes/atlas/Quicklist.md
