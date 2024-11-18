@@ -4,7 +4,7 @@ return {
     "neovim/nvim-lspconfig",
     opts = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "<leader>E", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Open Diagnostic Float" }
+      keys[#keys + 1] = { "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Open Diagnostic Float" }
     end,
   },
 }
