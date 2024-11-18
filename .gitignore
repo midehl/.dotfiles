@@ -3,3 +3,6 @@
 
 .config/tmux/plugins/*
 !.config/tmux/plugins/.gitkeep
+
+.config/nvim/lazyvim.json
+.config/nvim/lazy-lock.json
