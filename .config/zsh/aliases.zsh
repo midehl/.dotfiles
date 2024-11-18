@@ -103,13 +103,13 @@ alias gcm='git commit -m'
 alias gp='git pull'
 alias gP='git push' # capitalize push for safety
 alias gpf='git push --force-with-lease'
-alias gprb='git pull --rebase' # keep cleaner commit history
+alias gpr='git pull --rebase' # keep cleaner commit history
 # GIT Branch
 alias gb='git branch'
 alias gba='git branch -a'
 alias gco='git checkout'
 alias gcb='git checkout -b'
-alias gpr='git remote prune origin'
+alias grp='git remote prune origin'
 alias gm='git merge'
 # Other
 alias gstash='git stash'
