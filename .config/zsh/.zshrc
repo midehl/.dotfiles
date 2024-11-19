@@ -60,4 +60,13 @@ eval $(thefuck --alias fk)
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey '^e' autosuggest-accept
 
+function zle-line-init() {
+  echo -ne "\033[2 q"  # Block cursor
+}
+function zle-line-finish() {
+  echo -ne "\033[2 q"  # Block cursor
+}
+zle -N zle-line-init
+zle -N zle-line-finish
+
 #zprof
