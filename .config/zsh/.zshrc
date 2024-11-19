@@ -61,10 +61,10 @@ bindkey -s ^f "tmux-sessionizer\n"
 bindkey '^e' autosuggest-accept
 
 function zle-line-init() {
-  echo -ne "\033[2 q"  # Block cursor
+  echo -ne "\033[1 q"  # Blinking block cursor
 }
 function zle-line-finish() {
-  echo -ne "\033[2 q"  # Block cursor
+  echo -ne "\033[1 q"  # Blinking block cursor
 }
 zle -N zle-line-init
 zle -N zle-line-finish
