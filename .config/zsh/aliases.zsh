@@ -77,8 +77,8 @@ Options:
   # list local branches with no upstream and exclude protected branches
   local branches_to_delete=$(git branch -vv | awk '/: gone]/{print $1}' | grep -vE "^(${exclude_pattern})$")
   if [[ -n "$branches_to_delete" ]]; then
-    echo "The following branches have no upstream and will be deleted:"
-    echo "$branches_to_delete"
+    echo "The following branches have no upstream and will be deleted:\n"
+    echo "$branches_to_delete\n"
     # Note: Confirmation is Zsh syntax and may not work on other shells
     echo -n "Are you sure you want to (force) delete these branches? (y/N) "
     read confirmation
