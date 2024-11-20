@@ -80,10 +80,10 @@ Options:
     echo "The following branches have no upstream and will be deleted:"
     echo "$branches_to_delete"
     # Note: Confirmation is Zsh syntax and may not work on other shells
-    echo -n "Are you sure you want to delete these branches? (y/N) "
+    echo -n "Are you sure you want to (force) delete these branches? (y/N) "
     read confirmation
     if [[ "$confirmation" =~ ^[Yy]$ ]]; then
-      echo "$branches_to_delete" | xargs -n 1 git branch -d
+      echo "$branches_to_delete" | xargs -n 1 git branch -D
     else
       echo "Branch deletion aborted."
     fi
