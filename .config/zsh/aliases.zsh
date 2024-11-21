@@ -23,9 +23,9 @@ alias oo="cd $HOME/Notes && nvim"
 # Mnemonic: 'oo' - 'Obisidian Open Directory'
 alias ood="cd $HOME/Notes"
 function note() {
+  echo "" >> $HOME/Notes/atlas/Quicklist.md
   echo "date: $(date)" >> $HOME/Notes/atlas/Quicklist.md
   echo "$@" >> $HOME/Notes/atlas/Quicklist.md
-  echo "" >> $HOME/Notes/atlas/Quicklist.md
 }
 alias show_notes="bat $HOME/Notes/atlas/Quicklist.md --paging=never"
 
