@@ -1,5 +1,5 @@
 vim.opt_local.wrap = true -- Enable visual line wrapping
-vim.opt_local.textwidth = 80 -- Set maximum text width to 80 for automatic formatting
+vim.opt_local.textwidth = 120 -- Set maximum text width to 80 for automatic formatting
 vim.opt_local.formatoptions = "t" -- Enable automatic wrapping at 'textwidth' while typing
 vim.opt_local.linebreak = true
 
