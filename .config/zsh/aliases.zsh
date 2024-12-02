@@ -1,7 +1,6 @@
 # MISC ------------------------------
 alias c=clear
-alias t=tmux
-alias ta='tmux attach'
+alias t='tmux attach || tmux new-session'
 alias rm=trash-put
 alias cat="bat --paging=never"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
