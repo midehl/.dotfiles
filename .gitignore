@@ -1,8 +1,15 @@
 .config/zsh/plugins/zsh-completions/*
 .config/zsh/.zcompdump
+.config/zsh/.zsh_sessions/
 
 .config/tmux/plugins/*
 !.config/tmux/plugins/.gitkeep
 
 .config/nvim/lazyvim.json
 .config/nvim/lazy-lock.json
+
+.local/bin
+.local/lib
+.local/pipx
+.local/share
+.local/state
