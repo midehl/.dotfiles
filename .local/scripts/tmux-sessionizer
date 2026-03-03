@@ -5,6 +5,16 @@
 
 EXCLUDE_PATTERN='-not -path "*/.git*" -not -path "*/node_modules*" -not -path "*/.cache*" -not -path "*/.nvm*" -not -path "*/.zoom"'
 
+# Agent layout is ON by default. Use -n to disable.
+AGENT_LAYOUT=true
+while getopts "n" opt; do
+  case $opt in
+    n) AGENT_LAYOUT=false ;;
+    *) ;;
+  esac
+done
+shift $((OPTIND - 1))
+
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
@@ -19,17 +29,34 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-  tmux new-session -s $selected_name -c $selected
-  exit 0
+# Determine terminal dimensions based on context:
+# Inside tmux  -> ask the tmux client
+# Outside tmux -> ask the terminal directly via tput
+if [[ -n $TMUX ]]; then
+  term_width=$(tmux display -p '#{client_width}')
+  term_height=$(tmux display -p '#{client_height}')
+else
+  term_width=$(tput cols)
+  term_height=$(tput lines)
 fi
 
-if ! tmux has-session -t=$selected_name 2>/dev/null; then
-  tmux new-session -ds $selected_name -c $selected
+# Check if session already exists
+session_exists=false
+if tmux has-session -t=$selected_name 2>/dev/null; then
+  session_exists=true
+else
+  tmux new-session -ds $selected_name -c $selected -x "$term_width" -y "$term_height"
 fi
 
+# Apply layout for new sessions when agent layout is enabled
+if [[ $AGENT_LAYOUT == true ]] && [[ $session_exists == false ]]; then
+  tmux split-window -h -p 33 -c "$selected" -t "$selected_name"
+  tmux select-pane -L -t "$selected_name"
+  tmux send-keys -t "$selected_name" 'arlo' Enter
+fi
+
+# Attach or switch depending on context
 if [[ -n $TMUX ]]; then
   tmux switch-client -t "$selected_name"
 else
