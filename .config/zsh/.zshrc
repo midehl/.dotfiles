@@ -7,6 +7,18 @@ export GOPATH=$HOME/go
 export MOZ_ENABLE_WAYLAND=1
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+# Open in tmux popup if on tmux, otherwise use --height mode
+export FZF_DEFAULT_OPTS="
+  --height 40% 
+  --layout reverse 
+  --inline-info"
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --height 100%
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+# CTRL-Y to copy the command into clipboard using pbcopy
 export FZF_CTRL_R_OPTS="
   --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
   --color header:italic
