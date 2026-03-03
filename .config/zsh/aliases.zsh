@@ -28,6 +28,42 @@ function note() {
 }
 alias show_notes="bat $HOME/Notes/atlas/Quicklist.md --paging=never"
 
+# Kubernetes ----------------------
+k() {
+  if [[ -n "$ns" ]]; then
+    command kubectl -n "$ns" "$@"
+  else
+    command kubectl "$@"
+  fi
+}
+alias kubectl='k' # For when generating k8s commands with AI haha
+alias kg='k get'
+alias kd='k describe' # KEVIN DURANT
+
+# 🔧 Set namespace: kns <name>
+kns() {
+  if [[ -z "$1" ]]; then
+    echo "Current namespace: ${ns:-<default>}"
+    return
+  fi
+  
+  # Handle the clear case
+  if [[ "$1" == "-" ]]; then
+    unset ns
+    echo "❌ Namespace cleared"
+    return
+  fi
+  
+  # Get namespaces
+  if [[ "$1" == "get" ]]; then
+    kubectl get namespaces
+    return
+  fi
+  
+  export ns="$1"
+  echo "✅ Namespace set to: $ns"
+}
+
 # GIT ------------------------------
 # Status
 #alias ff='gpr && git pull --ff-only'
