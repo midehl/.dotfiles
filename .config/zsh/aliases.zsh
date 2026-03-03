@@ -125,7 +125,8 @@ Options:
   fi
 }
 alias gs='git status'
-alias gl='git log --all --graph --format=oneline'
+alias gl='git log --graph --format=oneline'
+alias glm='git log --graph --format=oneline' # current branch only
 alias glog='git log --all --graph'
 alias gd='git diff'
 alias gds='git diff --staged'
@@ -134,11 +135,14 @@ alias grs='git restore --staged'
 alias gad='git add '
 alias gal='git add .'
 alias gcm='git commit -m'
+alias gc='git commit'
 # Push/Pull
 alias gp='git pull'
 alias gP='git push' # capitalize push for safety
 alias gpf='git push --force-with-lease'
 alias gpr='git pull --rebase' # keep cleaner commit history
+alias grb='git rebase main'
+alias gci='git commit --allow-empty -m "Rerunning pipeline" && git push' # Run "git CI"
 # GIT Branch
 alias gb='git branch'
 alias gba='git branch -a'
