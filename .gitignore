@@ -1,4 +1,4 @@
-.config/zsh/plugins/zsh-completions/*
+.config/zsh/plugins/*
 .config/zsh/.zcompdump
 .config/zsh/.zsh_sessions/
 
