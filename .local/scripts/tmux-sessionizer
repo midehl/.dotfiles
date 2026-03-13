@@ -3,7 +3,7 @@
 # Inspired from:
 # https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
 
-EXCLUDE_PATTERN='-not -path "*/.git*" -not -path "*/node_modules*" -not -path "*/.cache*" -not -path "*/.nvm*" -not -path "*/.zoom"'
+EXCLUDE_PATTERN='-not -path "*/.git*" -not -path "*/node_modules*" -not -path "*/.cache*" -not -path "*/.nvm*" -not -path "*/.zoom" -not -path "*/.trash" -not -path "*/.obsidian"'
 
 # Agent layout is ON by default. Use -n to disable.
 AGENT_LAYOUT=true
