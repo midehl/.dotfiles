@@ -9,8 +9,8 @@ EXCLUDE_PATTERN='-not -path "*/.git*" -not -path "*/node_modules*" -not -path "*
 AGENT_LAYOUT=true
 while getopts "n" opt; do
   case $opt in
-    n) AGENT_LAYOUT=false ;;
-    *) ;;
+  n) AGENT_LAYOUT=false ;;
+  *) ;;
   esac
 done
 shift $((OPTIND - 1))
@@ -19,8 +19,9 @@ if [[ $# -eq 1 ]]; then
   selected=$1
 else
   selected=$( (
-    eval find ~/personal ~/ ~/.dotfiles ~/.dotfiles/.local/ ~/.dotfiles/.config/ -mindepth 1 -maxdepth 1 -type d $EXCLUDE_PATTERN
+    eval find ~/ ~/vault ~/.dotfiles ~/.dotfiles/.local/ ~/.dotfiles/.config/ -mindepth 1 -maxdepth 1 -type d $EXCLUDE_PATTERN
     eval find ~/school -type d $EXCLUDE_PATTERN
+    eval find ~/repos -mindepth 1 -maxdepth 3 $EXCLUDE_PATTERN
   ) | fzf)
 fi
 
