@@ -26,11 +26,19 @@ sudo pacman -S stow
 
 ## Basic Usage
 
-You should clone repo into your home directory, such as at ~/.dotfiles.
+Clone the repo into your home directory at ~/.dotfiles. It has git submodules
+(the zsh plugins), so clone with `--recurse-submodules`:
+
+```bash
+git clone --recurse-submodules <repo-url> ~/.dotfiles
+```
+
+(Already cloned without them? Run `git submodule update --init --recursive`.)
 
 Then, you can easily create symlinks for the files in this directory to their equivalent locations in the home directory using:
 
 ```bash
+cd ~/.dotfiles
 stow --dotfiles .
 ```
 
@@ -72,10 +80,15 @@ However, for manual control, create a `.stow-local-ignore`. Each line of this fi
 \.git
 misc
 #Docs
-^/.*\.md
+^/[^/]*\.md$
 ```
 
-This will avoid linking the `.git` folder (**you should do this**), a folder called `misc`, and any files ending in `.md` into your home directory.
+This will avoid linking the `.git` folder (**you should do this**), a folder called `misc`, and any `.md` files into your home directory.
+
+> The `.md` pattern is anchored to **root level only** (`^/[^/]*\.md$`), not
+> `^/.*\.md`. The unanchored version matches `.md` at *any* depth, which would
+> silently skip the `.claude/CLAUDE.md` and `.codex/AGENTS.md` leaf symlinks
+> (see "Global AI agent instructions" below). Keep it root-only.
 
 **Note**, by creating this file, you override `stow`'s default ignore file behavior.
 
@@ -88,3 +101,22 @@ stow -D --dotfiles .
 ```
 
 This will safely delete the symlinks created during setup without removing the actual files in `.dotfiles.`
+
+## Global AI agent instructions
+
+Tool-agnostic guidance that every AI coding agent (Claude Code, Codex) loads
+globally - mainly: "a personal Obsidian vault lives at ~/vault, reach it via
+the `obsidian` CLI, and never cross the ~/wault work boundary."
+
+One canonical source, symlinked into both tools so editing one file updates
+both:
+
+```
+misc/ai/AGENTS.md            <- canonical source (tracked; stow-IGNORED via misc)
+.claude/CLAUDE.md  -> ../misc/ai/AGENTS.md   stows to ~/.claude/CLAUDE.md  (Claude Code)
+.codex/AGENTS.md   -> ../misc/ai/AGENTS.md   stows to ~/.codex/AGENTS.md   (Codex)
+```
+
+To change the instructions, edit `misc/ai/AGENTS.md` only. The two leaf
+symlinks are plain `.md` files, so the `.stow-local-ignore` `.md` rule must
+stay root-only (see "Ignoring Files and Directories") or stow will skip them.
