@@ -4,7 +4,6 @@ add_newline = true
 command_timeout = 2000
 
 format = """
-$os\
 $directory\
 $git_branch\
 $git_commit\
@@ -151,7 +150,7 @@ format = '[ $user ]($style)'
 style = "fg:color_directory"
 read_only_style = "fg:color_directory"
 repo_root_style = "bold fg:color_directory"
-format = "[ $path ]($style)"
+format = "[$path ]($style)"
 read_only = " "
 home_symbol = "~"
 truncation_symbol = "…/"
