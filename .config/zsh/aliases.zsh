@@ -17,6 +17,11 @@ function take() {
   mkdir -p "$1"
   cd "$1"
 }
+function format-cwd-json() {
+  find . -name "*.json" -print0 | while IFS= read -r -d '' file; do
+    jq . "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+  done
+}
 # Mnemonic: 'oo' - 'Obsidian Open'
 alias oo="cd $HOME/Notes && nvim"
 # Mnemonic: 'oo' - 'Obisidian Open Directory'
@@ -154,15 +159,15 @@ alias gm='git merge'
 alias gstash='git stash'
 
 # Exa/LS------------------------------
-alias ls='exa'                                                          # ls
-alias l='exa -lbF --git'                                                # list, size, type, git
-alias ll='exa -lbGF --git'                                              # long list
-alias llm='exa -lbGd --git --sort=modified'                             # long list, modified date sort
-alias la='exa -lbhHigUmuSa --time-style=long-iso --git'                 # all list
-alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git'                # all list
+alias ls='eza'                                                          # ls
+alias l='eza -lbF --git'                                                # list, size, type, git
+alias ll='eza -lbGF --git'                                              # long list
+alias llm='eza -lbGd --git --sort=modified'                             # long list, modified date sort
+alias la='eza -lbhHigUmuSa --time-style=long-iso --git'                 # all list
+alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git'                # all list
 # specialty views
-alias lS='exa -1'                                                       # one column, just names
-alias lt='exa --tree --level=3'                                         # tree
+alias lS='eza -1'                                                       # one column, just names
+alias lt='eza --tree --level=3'                                         # tree
 
 # Configs------------------------------
 alias dotfiles="cd $HOME/.dotfiles/"
