@@ -54,7 +54,7 @@ fi
 if [[ $AGENT_LAYOUT == true ]] && [[ $session_exists == false ]]; then
   tmux split-window -h -p 33 -c "$selected" -t "$selected_name"
   tmux select-pane -L -t "$selected_name"
-  tmux send-keys -t "$selected_name" 'arlo' Enter
+  #tmux send-keys -t "$selected_name" 'arlo' Enter
 fi
 
 # Attach or switch depending on context
