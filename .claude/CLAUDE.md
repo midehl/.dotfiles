@@ -1,0 +1,1 @@
+../misc/ai/AGENTS.md
