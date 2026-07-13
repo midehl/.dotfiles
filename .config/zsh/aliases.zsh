@@ -1,3 +1,7 @@
+# AI
+alias cc='claude --dangerously-skip-permissions'
+
+
 # MISC ------------------------------
 alias c=clear
 alias t='tmux attach || tmux new-session'
