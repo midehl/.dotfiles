@@ -22,6 +22,9 @@ vim.opt.hlsearch = true
 --disable text wrap
 vim.opt.wrap = false
 
+--disable format on save
+vim.g.autoformat = false
+
 --set leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
