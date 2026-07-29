@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# herdr version of tmux-sessionizer: fzf a project dir, switch to its
+# herdr workspace or create one.
+
+EXCLUDE_PATTERN='-not -path "*/.git*" -not -path "*/node_modules*" -not -path "*/.cache*" -not -path "*/.nvm*" -not -path "*/.zoom" -not -path "*/.trash" -not -path "*/.obsidian"'
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=$( (
+    eval find ~/ ~/vault ~/.dotfiles ~/.dotfiles/.local/ ~/.dotfiles/.config/ -mindepth 1 -maxdepth 1 -type d $EXCLUDE_PATTERN
+    eval find ~/school -type d $EXCLUDE_PATTERN
+    eval find ~/repos -mindepth 1 -maxdepth 3 $EXCLUDE_PATTERN
+  ) | fzf)
+fi
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+
+# no server running yet -> start herdr fresh in the selected directory
+if ! workspaces=$(herdr workspace list 2>/dev/null); then
+  cd "$selected" && exec herdr
+fi
+
+# reuse an existing workspace with this label, else create one
+existing_id=$(jq -r --arg name "$selected_name" \
+  '.result.workspaces[] | select(.label == $name) | .workspace_id' <<<"$workspaces" | head -1)
+
+if [[ -n $existing_id ]]; then
+  herdr workspace focus "$existing_id" >/dev/null
+else
+  herdr workspace create --cwd "$selected" --label "$selected_name" --focus >/dev/null
+fi
+
+# outside herdr, attach so the switch is visible
+if [[ -z $HERDR_ENV ]]; then
+  exec herdr
+fi
