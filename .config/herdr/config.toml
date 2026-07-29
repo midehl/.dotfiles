@@ -64,6 +64,30 @@ auto_switch = false
 # alt+..., cmd/super, and punctuation-with-modifiers may depend on your terminal/tmux setup.
 prefix = "ctrl+a"
 
+# Agent navigation 
+focus_agent = "ctrl+alt+1..9"
+next_agent = "alt+n"
+previous_agent = "alt+p"
+
+# Global back-and-forth between the two most recent panes
+last_pane = "prefix+semicolon"
+
+# Workspaces 
+previous_workspace = "prefix+("
+next_workspace = "prefix+)"
+switch_workspace = "prefix+shift+1..9"
+
+# Worktrees (next to new_worktree = prefix+shift+g); remove_worktree stays unset
+open_worktree = "prefix+alt+g"
+
+# Tabs: defaults + ctrl-held repeat (
+previous_tab = ["prefix+p", "prefix+ctrl+p", "alt+shift+h"]
+next_tab = ["prefix+n", "prefix+ctrl+n", "alt+shift+l"]
+
+# Splits and navigator 
+split_vertical = ["prefix+v", "prefix+backslash"]
+goto = ["prefix+g", "prefix+f"]
+
 # Prefix-mode actions
 # help = "prefix+?"
 # settings = "prefix+s"
