@@ -5,6 +5,7 @@ alias cc='claude --dangerously-skip-permissions'
 # MISC ------------------------------
 alias c=clear
 alias t='tmux attach || tmux new-session'
+alias h='herdr'
 alias rm=trash-put
 alias cat="bat --paging=never"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
