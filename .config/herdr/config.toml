@@ -84,9 +84,9 @@ open_worktree = "prefix+alt+g"
 previous_tab = ["prefix+p", "prefix+ctrl+p", "alt+shift+h"]
 next_tab = ["prefix+n", "prefix+ctrl+n", "alt+shift+l"]
 
-# Splits and navigator 
+# Splits and navigator
 split_vertical = ["prefix+v", "prefix+backslash"]
-goto = ["prefix+g", "prefix+f"]
+goto = "prefix+g"
 
 # Prefix-mode actions
 # help = "prefix+?"
@@ -133,8 +133,8 @@ goto = ["prefix+g", "prefix+f"]
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
 # They are independent from focus_pane_*. Do not include prefix+, esc, enter, tab, or 1..9 here.
-# navigate_workspace_up = "up"
-# navigate_workspace_down = "down"
+navigate_workspace_up = ["up", "ctrl+k"]
+navigate_workspace_down = ["down", "ctrl+j"]
 # navigate_pane_left = "h"      # left arrow always focuses the pane to the left
 # navigate_pane_down = "j"
 # navigate_pane_up = "k"
@@ -152,6 +152,14 @@ goto = ["prefix+g", "prefix+f"]
 # command = "lazygit"
 # width = "80%"
 # height = "80%"
+
+# Sessionizer: fuzzy-pick a project dir, switch/create its workspace
+[[keys.command]]
+key = "prefix+f"
+type = "popup"
+command = "herdr-sessionizer"
+width = "60%"
+height = "60%"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.

@@ -69,7 +69,8 @@ source $ZDOTDIR/aliases.zsh
 
 # CLI Tools
 eval $(thefuck --alias fk)
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "herdr-sessionizer\n"
+bindkey -s ^g "tmux-sessionizer\n"
 bindkey '^e' autosuggest-accept
 
 # Set key bindings for Backspace in Vi insert mode
