@@ -21,9 +21,17 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 
-# no server running yet -> start herdr fresh in the selected directory
+# no server running yet -> start one headless, then create the workspace via the API
 if ! workspaces=$(herdr workspace list 2>/dev/null); then
-  cd "$selected" && exec herdr
+  setsid herdr server >/dev/null 2>&1 &
+  for _ in $(seq 1 50); do
+    workspaces=$(herdr workspace list 2>/dev/null) && break
+    sleep 0.1
+  done
+  if [[ -z $workspaces ]]; then
+    echo "herdr server did not come up" >&2
+    exit 1
+  fi
 fi
 
 # reuse an existing workspace with this label, else create one
