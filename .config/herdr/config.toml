@@ -41,7 +41,7 @@ auto_switch = false
 # Update channel used by background version checks and `herdr update`.
 # Defaults to "stable" on Linux/macOS and "preview" on Windows.
 # Set explicitly to choose stable releases or opt-in preview builds.
-# channel = "stable"
+channel = "preview"
 
 # Check herdr.dev for new Herdr versions in the background.
 # version_check = true
@@ -147,7 +147,7 @@ navigate_workspace_down = ["down", "ctrl+j"]
 key = "prefix+alt+g"
 type = "pane"
 command = "lazygit"
-description = "run lazygit"
+description = "lazygit"
 
 # Sessionizer: fuzzy-pick a project dir, switch/create its workspace
 [[keys.command]]
@@ -156,6 +156,7 @@ type = "popup"
 command = "herdr-sessionizer"
 width = "80%"
 height = "80%"
+description = "herdr sessionizer"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
