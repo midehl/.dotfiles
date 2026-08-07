@@ -19,6 +19,22 @@ return {
         sources = {
           explorer = { hidden = true, ignored = true },
         },
+        win = {
+          -- KDE grabs plain Alt+H (desktop left) and Alt+M (maximize window),
+          -- so the snacks defaults <a-h>/<a-m> never reach nvim
+          input = {
+            keys = {
+              ["<a-.>"] = { "toggle_hidden", mode = { "i", "n" } },
+              ["<a-z>"] = { "toggle_maximize", mode = { "i", "n" } },
+            },
+          },
+          list = {
+            keys = {
+              ["<a-.>"] = "toggle_hidden",
+              ["<a-z>"] = "toggle_maximize",
+            },
+          },
+        },
       },
     },
   },
