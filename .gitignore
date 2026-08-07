@@ -11,5 +11,6 @@
 .local/bin
 .local/lib
 .local/pipx
-.local/share
+.local/share/*
+!.local/share/kwin/
 .local/state

@@ -1,0 +1,12 @@
+{
+    "KPlugin": {
+        "Id": "dock-migrate",
+        "Name": "Dock Migrate",
+        "Description": "When the external monitor connects, sweep windows off the laptop panel onto it; windows left on the laptop screen are pinned to all desktops.",
+        "Version": "1.0",
+        "Authors": [{ "Name": "John Miclat" }]
+    },
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "code/main.js",
+    "KPackageStructure": "KWin/Script"
+}
