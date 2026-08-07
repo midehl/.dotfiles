@@ -3,6 +3,15 @@
 Tool-agnostic guidance loaded by every AI coding session (Claude Code via
 `~/.claude/CLAUDE.md`, Codex via `~/.codex/AGENTS.md`). Keep it lean.
 
+## Dotfiles (~/.dotfiles)
+
+New user-level configs, scripts, or plugin files belong in `~/.dotfiles`
+(a git repo managed with GNU Stow, mirroring $HOME), not loose in the home
+directory - so they are tracked. Create the file under the mirrored path,
+symlink it into place stow-style, and check `.gitignore` (some trees like
+`.local/share/*` are ignored and need a whitelist entry). Commit after
+adding. Only truly machine-local or throwaway files skip the repo.
+
 ## Personal knowledge vault (~/vault)
 
 A personal Obsidian knowledge/thinking vault lives at `~/vault`. When a task

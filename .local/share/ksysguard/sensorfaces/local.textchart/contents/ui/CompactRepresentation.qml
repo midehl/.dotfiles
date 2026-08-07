@@ -17,10 +17,10 @@ Faces.CompactSensorFace {
     id: root
 
     function iconFor(sensorId) {
-        if (sensorId.indexOf("cpu/") === 0) return "file:///home/midel/Pictures/svgs/cpu-icon.svg";
-        if (sensorId.indexOf("gpu/") === 0) return "file:///home/midel/Pictures/svgs/gpu-icon.svg";
+        if (sensorId.indexOf("cpu/") === 0) return Qt.resolvedUrl("../icons/cpu-icon.svg");
+        if (sensorId.indexOf("gpu/") === 0) return Qt.resolvedUrl("../icons/gpu-icon.svg");
         if (sensorId.indexOf("memory/swap") === 0) return "drive-harddisk-symbolic";
-        if (sensorId.indexOf("memory/") === 0) return "file:///home/midel/Pictures/svgs/ram-memory-icon.svg";
+        if (sensorId.indexOf("memory/") === 0) return Qt.resolvedUrl("../icons/ram-memory-icon.svg");
         if (sensorId.indexOf("download") !== -1) return "arrow-down-symbolic";
         if (sensorId.indexOf("upload") !== -1) return "arrow-up-symbolic";
         return "dialog-information";
