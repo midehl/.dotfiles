@@ -1,0 +1,12 @@
+{
+    "KPackageStructure": "KSysguard/SensorFace",
+    "KPlugin": {
+        "Id": "local.textchart",
+        "Name": "Text + Chart Popup",
+        "Icon": "view-list-text",
+        "License": "LGPLv2+",
+        "Version": "1.0",
+        "Website": "https://kde.org"
+    },
+    "X-KDE-ParentApp": "org.kde.plasmashell"
+}

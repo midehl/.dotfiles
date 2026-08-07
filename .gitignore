@@ -13,4 +13,5 @@
 .local/pipx
 .local/share/*
 !.local/share/kwin/
+!.local/share/ksysguard/
 .local/state
