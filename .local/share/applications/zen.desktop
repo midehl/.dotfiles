@@ -1,0 +1,21 @@
+[Desktop Entry]
+Name=Zen (iGPU)
+Comment=Zen Browser on the Intel iGPU (default)
+Exec=/opt/zen-browser-bin/zen-bin %u
+Icon=zen-browser
+Type=Application
+MimeType=application/json;application/pdf;application/rdf+xml;application/rss+xml;application/x-xpinstall;application/xhtml+xml;application/xml;audio/flac;audio/ogg;audio/webm;image/avif;image/gif;image/jpeg;image/png;image/svg+xml;image/webp;text/html;text/xml;video/ogg;video/webm;x-scheme-handler/chrome;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/mailto;
+StartupWMClass=zen
+Categories=Network;WebBrowser;
+StartupNotify=true
+Terminal=false
+GenericName=Web Browser
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Exec=/opt/zen-browser-bin/zen-bin %u
+Name=New Window
+
+[Desktop Action new-private-window]
+Exec=/opt/zen-browser-bin/zen-bin --private-window %u
+Name=New Private Window

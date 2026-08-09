@@ -15,4 +15,5 @@
 .local/share/*
 !.local/share/kwin/
 !.local/share/ksysguard/
+!.local/share/applications/
 .local/state
