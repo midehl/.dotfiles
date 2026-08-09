@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Zen (dGPU)
+Name=Zen dGPU
 Comment=Zen Browser rendered on the NVIDIA dGPU (PRIME offload)
 Exec=env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia /opt/zen-browser-bin/zen-bin %u
 Icon=zen-browser

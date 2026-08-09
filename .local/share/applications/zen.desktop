@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Zen (iGPU)
+Name=Zen iGPU
 Comment=Zen Browser on the Intel iGPU (default)
 Exec=/opt/zen-browser-bin/zen-bin %u
 Icon=zen-browser
