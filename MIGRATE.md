@@ -12,8 +12,8 @@ through those folds. Fix, in order:
    real `$HOME` (e.g. repo `.local/share/applications/Foo.desktop` ->
    `~/.local/share/applications/Foo.desktop`). Tree must be clean before step 3.
 3. `cd ~/.dotfiles && stow -Rv --dotfiles --no-folding -t ~ .`
-   On CONFLICT: stow aborts ALL operations, so nothing was applied — fix and
-   re-run. If the conflicting target is a symlink already pointing into this
+   On CONFLICT: stow (any v2, which step 1 guarantees) aborts ALL operations,
+   so nothing was applied — fix and re-run. If the conflicting target is a symlink already pointing into this
    repo (stow only owns *relative* links, so a hand-made absolute link reads
    as "not owned"), just `rm` it — stow recreates it. A real file: back it up
    out of the way first. NEVER use `--adopt` — it pulls the machine's file
