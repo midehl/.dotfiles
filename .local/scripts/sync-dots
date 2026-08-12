@@ -41,7 +41,7 @@ else
   # Run stow to link all dotfiles
   echo -e "${GREEN}Linking dotfiles with stow...${NC}"
 
-  stow -v --dotfiles -t ~ . || { echo -e "${RED}Failed to stow dotfiles.${NC}"; }
+  stow -v --dotfiles --no-folding -t ~ . || { echo -e "${RED}Failed to stow dotfiles.${NC}"; }
 fi
 
 # Return to the original directory

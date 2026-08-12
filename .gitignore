@@ -8,12 +8,17 @@
 .config/nvim/lazyvim.json
 .config/nvim/lazy-lock.json
 
-.local/bin/*
-!.local/bin/install-disarm-wakeup.sh
 .local/lib
 .local/pipx
 .local/share/*
-!.local/share/kwin/
-!.local/share/ksysguard/
 !.local/share/applications/
+.local/share/applications/*
+!.local/share/applications/zen.desktop
+!.local/share/applications/zen-nvidia.desktop
+!.local/share/kwin/
+.local/share/kwin/*
+!.local/share/kwin/scripts/
+.local/share/kwin/scripts/*
+!.local/share/kwin/scripts/dock-migrate/
+!.local/share/ksysguard/
 .local/state
