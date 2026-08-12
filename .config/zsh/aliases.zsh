@@ -11,6 +11,7 @@ alias cat="bat --paging=never"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias vim=nvim
 alias v=nvim
+alias update-lazyvim="nvim --headless '+Lazy! sync' +qa"
 alias d=docker
 function dclear() {
   docker ps -q | xargs -r docker kill
