@@ -1,0 +1,5 @@
+git:
+  diffRenderers: # cycle with |
+    - command: delta --dark --paging=never
+    - type: extDiff
+      command: difft --color=always --context={{diffContext}}
